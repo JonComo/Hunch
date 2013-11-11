@@ -21,6 +21,8 @@
 		8697F78A1830F5030080BF89 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8697F76C1830F5020080BF89 /* UIKit.framework */; };
 		8697F7921830F5030080BF89 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8697F7901830F5030080BF89 /* InfoPlist.strings */; };
 		8697F7941830F5030080BF89 /* HunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8697F7931830F5030080BF89 /* HunchTests.m */; };
+		8697F79F1830FB960080BF89 /* JCGradientBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 8697F79E1830FB960080BF89 /* JCGradientBackground.m */; };
+		8697F7A21830FFA50080BF89 /* HUCircleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8697F7A11830FFA50080BF89 /* HUCircleLabel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,10 @@
 		8697F78F1830F5030080BF89 /* HunchTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HunchTests-Info.plist"; sourceTree = "<group>"; };
 		8697F7911830F5030080BF89 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8697F7931830F5030080BF89 /* HunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HunchTests.m; sourceTree = "<group>"; };
+		8697F79D1830FB960080BF89 /* JCGradientBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCGradientBackground.h; sourceTree = "<group>"; };
+		8697F79E1830FB960080BF89 /* JCGradientBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCGradientBackground.m; sourceTree = "<group>"; };
+		8697F7A01830FFA50080BF89 /* HUCircleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUCircleLabel.h; sourceTree = "<group>"; };
+		8697F7A11830FFA50080BF89 /* HUCircleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUCircleLabel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +125,10 @@
 				8697F77E1830F5020080BF89 /* HUViewController.m */,
 				8697F7801830F5030080BF89 /* Images.xcassets */,
 				8697F76F1830F5020080BF89 /* Supporting Files */,
+				8697F79D1830FB960080BF89 /* JCGradientBackground.h */,
+				8697F79E1830FB960080BF89 /* JCGradientBackground.m */,
+				8697F7A01830FFA50080BF89 /* HUCircleLabel.h */,
+				8697F7A11830FFA50080BF89 /* HUCircleLabel.m */,
 			);
 			path = Hunch;
 			sourceTree = "<group>";
@@ -250,6 +260,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8697F7A21830FFA50080BF89 /* HUCircleLabel.m in Sources */,
+				8697F79F1830FB960080BF89 /* JCGradientBackground.m in Sources */,
 				8697F77F1830F5020080BF89 /* HUViewController.m in Sources */,
 				8697F7751830F5020080BF89 /* main.m in Sources */,
 				8697F7791830F5020080BF89 /* HUAppDelegate.m in Sources */,
