@@ -13,9 +13,8 @@
 
 @implementation HUHistoryCell
 {
-    __weak IBOutlet HUCircleLabel *labelA;
-    __weak IBOutlet HUCircleLabel *labelB;
-    __weak IBOutlet HUCircleLabel *labelResult;
+    __weak IBOutlet HUCircleLabel *labelLosing;
+    __weak IBOutlet HUCircleLabel *labelWinning;
     
     __weak IBOutlet JCGradientBackground *viewGradient;
 }
@@ -36,18 +35,17 @@
     UIColor *primary = decision[@"PRIMARY"];
     UIColor *secondary = decision[@"SECONDARY"];
     
-    labelA.text = decision[@"A"];
-    labelB.text = decision[@"B"];
-    labelResult.text = decision[@"FINAL"];
+    labelWinning.text = decision[@"FINAL"];
     
-    labelA.color = primary;
-    labelB.color = secondary;
-    
-    if ([labelResult.text isEqualToString:labelA.text])
+    if ([labelWinning.text isEqualToString:decision[@"A"]])
     {
-        labelResult.color = labelA.color;
+        labelLosing.text = decision[@"B"];
+        labelWinning.color = primary;
+        labelLosing.color = secondary;
     }else{
-        labelResult.color = labelB.color;
+        labelLosing.text = decision[@"A"];
+        labelWinning.color = secondary;
+        labelLosing.color = primary;
     }
     
     viewGradient.primary = primary;

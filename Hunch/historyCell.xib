@@ -18,36 +18,25 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="1" green="0.78817683404397543" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YDv-Pn-wwu" customClass="HUCircleLabel">
-                        <rect key="frame" x="20" y="20" width="80" height="80"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="80" translatesAutoresizingMaskIntoConstraints="NO" id="YDv-Pn-wwu" customClass="HUCircleLabel">
+                        <rect key="frame" x="10" y="125" width="80" height="80"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="80" id="K2U-aM-YEU"/>
                             <constraint firstAttribute="height" constant="80" id="WYc-vK-WPf"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NdV-Jl-qvk" customClass="HUCircleLabel">
-                        <rect key="frame" x="180" y="20" width="80" height="80"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="160" translatesAutoresizingMaskIntoConstraints="NO" id="cjd-dw-JtC" customClass="HUCircleLabel">
+                        <rect key="frame" x="60" y="28" width="160" height="160"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="80" id="6Bw-iB-I0T"/>
-                            <constraint firstAttribute="height" constant="80" id="kgp-LJ-lq0"/>
+                            <constraint firstAttribute="height" constant="160" id="WVi-KC-wJJ"/>
+                            <constraint firstAttribute="width" constant="160" id="cEm-K5-1CO"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjd-dw-JtC" customClass="HUCircleLabel">
-                        <rect key="frame" x="80" y="75" width="120" height="120"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="120" id="WVi-KC-wJJ"/>
-                            <constraint firstAttribute="width" constant="120" id="cEm-K5-1CO"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -69,25 +58,22 @@
             </view>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="NdV-Jl-qvk" firstAttribute="top" secondItem="VPg-ap-0TN" secondAttribute="top" constant="20" id="AOP-GN-Vnz"/>
-                <constraint firstAttribute="bottom" secondItem="cjd-dw-JtC" secondAttribute="bottom" constant="20" id="EGb-t3-ZY4"/>
-                <constraint firstItem="YDv-Pn-wwu" firstAttribute="leading" secondItem="VPg-ap-0TN" secondAttribute="leading" constant="20" id="Gch-it-cQC"/>
                 <constraint firstAttribute="bottom" secondItem="OEc-3s-Qla" secondAttribute="bottom" id="Ovx-zA-Ya1"/>
-                <constraint firstAttribute="centerX" secondItem="cjd-dw-JtC" secondAttribute="centerX" id="QVO-VD-kac"/>
-                <constraint firstItem="YDv-Pn-wwu" firstAttribute="top" secondItem="VPg-ap-0TN" secondAttribute="top" constant="20" id="SDq-7f-wCA"/>
                 <constraint firstItem="mJN-8g-Els" firstAttribute="leading" secondItem="VPg-ap-0TN" secondAttribute="leading" id="V4z-Rx-Asn"/>
                 <constraint firstItem="mJN-8g-Els" firstAttribute="top" secondItem="VPg-ap-0TN" secondAttribute="top" id="b1v-WW-4sg"/>
-                <constraint firstAttribute="trailing" secondItem="NdV-Jl-qvk" secondAttribute="trailing" constant="20" id="ijs-Dq-0BN"/>
+                <constraint firstAttribute="centerY" secondItem="cjd-dw-JtC" secondAttribute="centerY" id="hhc-sf-JKL"/>
+                <constraint firstAttribute="centerX" secondItem="cjd-dw-JtC" secondAttribute="centerX" id="ipi-fi-yy5"/>
                 <constraint firstAttribute="trailing" secondItem="OEc-3s-Qla" secondAttribute="trailing" constant="3" id="qJF-Wk-ir7"/>
+                <constraint firstItem="YDv-Pn-wwu" firstAttribute="leading" secondItem="VPg-ap-0TN" secondAttribute="leading" constant="10" id="t1b-Be-s7i"/>
                 <constraint firstAttribute="bottom" secondItem="mJN-8g-Els" secondAttribute="bottom" id="vsB-Ez-zOM"/>
                 <constraint firstAttribute="trailing" secondItem="mJN-8g-Els" secondAttribute="trailing" id="xlt-SC-GyY"/>
+                <constraint firstAttribute="bottom" secondItem="YDv-Pn-wwu" secondAttribute="bottom" constant="10" id="yU8-fa-RD4"/>
             </constraints>
             <size key="customSize" width="280" height="215"/>
             <connections>
                 <outlet property="buttonRemove" destination="OEc-3s-Qla" id="zWn-cW-NrR"/>
-                <outlet property="labelA" destination="YDv-Pn-wwu" id="ZbP-5c-5bT"/>
-                <outlet property="labelB" destination="NdV-Jl-qvk" id="eYT-WG-72d"/>
-                <outlet property="labelResult" destination="cjd-dw-JtC" id="HsS-BV-m2G"/>
+                <outlet property="labelLosing" destination="YDv-Pn-wwu" id="vX3-PP-Zwy"/>
+                <outlet property="labelWinning" destination="cjd-dw-JtC" id="k8e-fx-BiZ"/>
                 <outlet property="viewGradient" destination="mJN-8g-Els" id="psg-lS-7M0"/>
             </connections>
         </collectionViewCell>

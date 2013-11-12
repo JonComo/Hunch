@@ -14,13 +14,16 @@
 #import "JCCollectionView.h"
 #import "HUHistoryCell.h"
 
+#import "HUResultView.h"
+
+#define DEFAULT_A @"Tap to change"
+#define DEFAULT_B @"Tap to change"
+
 #define HISTORY_PATH [NSString stringWithFormat:@"%@/history", [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]]
 
 @interface HUViewController () <UIAlertViewDelegate>
 {
     HUCircleLabel *labelToChange;
-    
-    NSString *decidedOption;
     
     __weak IBOutlet HUCircleLabel *labelA;
     __weak IBOutlet HUCircleLabel *labelB;
@@ -29,6 +32,8 @@
     JCCollectionView *collectionViewHistory;
     
     NSMutableArray *history;
+    
+    BOOL showingAlert;
 }
 
 @end
@@ -46,7 +51,9 @@
     UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedOption:)];
     [labelB addGestureRecognizer:tap2];
     
-    [self changeColors];
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    [self reset];
     
     history = [self loadHistory];
 }
@@ -74,6 +81,14 @@
     float b = [self randomFloat]*0.8;
     
     return [UIColor colorWithRed:r green:g blue:b alpha:1];
+}
+
+-(void)reset
+{
+    [self changeColors];
+    
+    labelA.text = DEFAULT_A;
+    labelB.text = DEFAULT_B;
 }
 
 -(void)changeColors
@@ -111,43 +126,6 @@
             
             labelToChange.text = textField.text;
         }
-    }else if(alertView.tag == 200)
-    {
-        NSString *title;
-        NSString *finalChoice;
-        
-        if (buttonIndex == 1) {
-            //show same option
-            
-            title = @"Great!";
-            
-        }else{
-            //show other option
-            
-            title = @"Ok, then..";
-            
-            if ([decidedOption isEqualToString:labelA.text])
-            {
-                finalChoice = labelB.text;
-            }else{
-                finalChoice = labelA.text;
-            }
-        }
-        
-        UIAlertView *finalAlert = [[UIAlertView alloc] initWithTitle:title message:finalChoice delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        finalAlert.tag = 300;
-        [finalAlert show];
-        
-        JCGradientBackground *view = (JCGradientBackground *)self.view;
-        
-        [self archiveProcess:@{@"A": labelA.text, @"B": labelB.text, @"RAND": decidedOption, @"FINAL": finalChoice ? finalChoice : decidedOption, @"PRIMARY": view.primary, @"SECONDARY": view.secondary}];
-        
-    }else if(alertView.tag == 300)
-    {
-        //final alert
-        [self changeColors];
-        labelA.text = @"A";
-        labelB.text = @"B";
     }
 }
 
@@ -168,35 +146,78 @@
     
     if (!history) history = [NSMutableArray array];
     
-    [history addObject:process];
+    [history insertObject:process atIndex:0];
     
     [NSKeyedArchiver archiveRootObject:history toFile:HISTORY_PATH];
 }
 
-- (IBAction)decide:(id)sender {
-    int random = arc4random()%2;
+- (IBAction)decide:(id)sender
+{
+    BOOL isA;
     
+    JCGradientBackground *view = (JCGradientBackground *)self.view;
+    
+    int random = arc4random()%2;
     if (random)
     {
-        decidedOption = labelA.text;
+        //A
+        isA = YES;
     }else{
-        decidedOption = labelB.text;
+        //B
+        isA = NO;
     }
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Do this:" message:decidedOption delegate:self cancelButtonTitle:@"NO!" otherButtonTitles:@"YEAH!", nil];
+    NSString *choice = isA ? labelA.text : labelB.text;
+    UIColor *primary = isA ? view.primary : view.secondary;
+    UIColor *secondary = isA ? view.secondary : view.primary;
     
-    alert.tag = 200;
-    
-    [alert show];
+    [HUResultView showResultWithTitle:@"Result" message:choice color:primary inView:self.view buttonNames:@[@"Bad", @"Good"] action:^(NSInteger buttonIndex) {
+        
+        if (buttonIndex == 1)
+        {
+            //good
+            
+            [HUResultView showResultWithTitle:@"Great! Then do" message:choice color:primary inView:self.view buttonNames:@[@"Ok"] action:^(NSInteger buttonIndex)
+            {
+                [self archiveProcess:@{@"A": labelA.text, @"B": labelB.text, @"RAND": choice, @"FINAL": choice, @"PRIMARY": primary, @"SECONDARY": secondary}];
+                
+                [self reset];
+                [HUResultView hideAlertAnimated:YES hideFade:YES];
+            }];
+        }else{
+            //bad
+            
+            NSString *choice = isA ? labelA.text : labelB.text;
+            NSString *opposite = isA ? labelB.text : labelA.text;
+            UIColor *primary = isA ? view.secondary : view.primary;
+            UIColor *secondary = isA ? view.primary : view.secondary;
+            
+            [HUResultView showResultWithTitle:@"Ok, then do" message:opposite color:primary inView:self.view buttonNames:@[@"Ok"] action:^(NSInteger buttonIndex)
+            {
+                [self archiveProcess:@{@"A": labelA.text, @"B": labelB.text, @"RAND": choice, @"FINAL": opposite, @"PRIMARY": primary, @"SECONDARY": secondary}];
+                
+                [self reset];
+                [HUResultView hideAlertAnimated:YES hideFade:YES];
+            }];
+        }
+    }];
 }
 
 - (IBAction)showHistory:(id)sender {
     
     if (!viewHistory)
     {
-        viewHistory = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+        JCGradientBackground *view = (JCGradientBackground *)self.view;
         
-        viewHistory.backgroundColor = [UIColor colorWithWhite:1 alpha:0.2];
+        viewHistory = [[UIView alloc] initWithFrame:self.view.frame];
+        
+        CGFloat red;
+        CGFloat blue;
+        CGFloat green;
+
+        [view.primary getRed:&red green:&green blue:&blue alpha:nil];
+        
+        viewHistory.backgroundColor = [UIColor colorWithRed:red green:green blue:blue alpha:0.8];
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideHistory)];
         [viewHistory addGestureRecognizer:tap];
@@ -218,13 +239,20 @@
             
             historyCell.decision = decision;
             
+            historyCell.buttonRemove.tag = indexPath.row;
+            
+            if (historyCell.buttonRemove.allTargets.count == 0)
+            {
+                [historyCell.buttonRemove addTarget:self action:@selector(deleteHistoryItem:) forControlEvents:UIControlEventTouchUpInside];
+            }
+            
             return cell;
             
         }];
         
         collectionViewHistory.cellName = @"historyCell";
         
-        JCGradientBackground *view = (JCGradientBackground *)self.view;
+        
         
         JCGradientBackground *viewBackground = [[JCGradientBackground alloc] initWithFrame:CGRectMake(0, 0, collectionViewHistory.backgroundView.bounds.size.width, collectionViewHistory.backgroundView.bounds.size.height)];
         
@@ -267,6 +295,16 @@
             [viewHistory removeFromSuperview];
         }];
     }
+}
+
+-(void)deleteHistoryItem:(UIButton *)button
+{
+    int index = button.tag;
+    
+    [history removeObjectAtIndex:index];
+    [collectionViewHistory reloadData];
+    
+    [NSKeyedArchiver archiveRootObject:history toFile:HISTORY_PATH];
 }
 
 @end
