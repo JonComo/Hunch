@@ -48,13 +48,16 @@
     UIColor* fillColor = self.color;
     
     //// Frames
-    CGRect frame = CGRectMake(0, 0, rect.size.width, rect.size.height);
+    CGRect frame = CGRectMake(3, 3, rect.size.width-6, rect.size.height-6);
     
     
     //// Oval Drawing
     UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(CGRectGetMinX(frame), CGRectGetMinY(frame), CGRectGetWidth(frame), CGRectGetHeight(frame))];
+    ovalPath.lineWidth = 3;
     [fillColor setFill];
+    [[UIColor colorWithWhite:1 alpha:0.2] setStroke];
     [ovalPath fill];
+    [ovalPath stroke];
     
     [super drawRect:rect];
 }

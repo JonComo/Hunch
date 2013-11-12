@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		867B4B5E1832021A00F60F35 /* JCCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 867B4B5D1832021A00F60F35 /* JCCollectionView.m */; };
+		867B4B601832055C00F60F35 /* historyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 867B4B5F1832055C00F60F35 /* historyCell.xib */; };
+		867B4B631832098500F60F35 /* HUHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 867B4B621832098500F60F35 /* HUHistoryCell.m */; };
+		867B4B65183213C200F60F35 /* resultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 867B4B64183213C200F60F35 /* resultView.xib */; };
+		867B4B681832149900F60F35 /* HUResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 867B4B671832149900F60F35 /* HUResultView.m */; };
 		8697F7691830F5020080BF89 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8697F7681830F5020080BF89 /* Foundation.framework */; };
 		8697F76B1830F5020080BF89 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8697F76A1830F5020080BF89 /* CoreGraphics.framework */; };
 		8697F76D1830F5020080BF89 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8697F76C1830F5020080BF89 /* UIKit.framework */; };
@@ -36,6 +41,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		867B4B5C1832021A00F60F35 /* JCCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCCollectionView.h; sourceTree = "<group>"; };
+		867B4B5D1832021A00F60F35 /* JCCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCCollectionView.m; sourceTree = "<group>"; };
+		867B4B5F1832055C00F60F35 /* historyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = historyCell.xib; sourceTree = "<group>"; };
+		867B4B611832098500F60F35 /* HUHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUHistoryCell.h; sourceTree = "<group>"; };
+		867B4B621832098500F60F35 /* HUHistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUHistoryCell.m; sourceTree = "<group>"; };
+		867B4B64183213C200F60F35 /* resultView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = resultView.xib; sourceTree = "<group>"; };
+		867B4B661832149900F60F35 /* HUResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUResultView.h; sourceTree = "<group>"; };
+		867B4B671832149900F60F35 /* HUResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUResultView.m; sourceTree = "<group>"; };
 		8697F7651830F5020080BF89 /* Hunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8697F7681830F5020080BF89 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8697F76A1830F5020080BF89 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -125,10 +138,18 @@
 				8697F77E1830F5020080BF89 /* HUViewController.m */,
 				8697F7801830F5030080BF89 /* Images.xcassets */,
 				8697F76F1830F5020080BF89 /* Supporting Files */,
-				8697F79D1830FB960080BF89 /* JCGradientBackground.h */,
-				8697F79E1830FB960080BF89 /* JCGradientBackground.m */,
 				8697F7A01830FFA50080BF89 /* HUCircleLabel.h */,
 				8697F7A11830FFA50080BF89 /* HUCircleLabel.m */,
+				8697F79D1830FB960080BF89 /* JCGradientBackground.h */,
+				8697F79E1830FB960080BF89 /* JCGradientBackground.m */,
+				867B4B5C1832021A00F60F35 /* JCCollectionView.h */,
+				867B4B5D1832021A00F60F35 /* JCCollectionView.m */,
+				867B4B611832098500F60F35 /* HUHistoryCell.h */,
+				867B4B621832098500F60F35 /* HUHistoryCell.m */,
+				867B4B5F1832055C00F60F35 /* historyCell.xib */,
+				867B4B661832149900F60F35 /* HUResultView.h */,
+				867B4B671832149900F60F35 /* HUResultView.m */,
+				867B4B64183213C200F60F35 /* resultView.xib */,
 			);
 			path = Hunch;
 			sourceTree = "<group>";
@@ -239,8 +260,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				867B4B65183213C200F60F35 /* resultView.xib in Resources */,
 				8697F7811830F5030080BF89 /* Images.xcassets in Resources */,
 				8697F7731830F5020080BF89 /* InfoPlist.strings in Resources */,
+				867B4B601832055C00F60F35 /* historyCell.xib in Resources */,
 				8697F77C1830F5020080BF89 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,7 +283,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				867B4B681832149900F60F35 /* HUResultView.m in Sources */,
 				8697F7A21830FFA50080BF89 /* HUCircleLabel.m in Sources */,
+				867B4B5E1832021A00F60F35 /* JCCollectionView.m in Sources */,
+				867B4B631832098500F60F35 /* HUHistoryCell.m in Sources */,
 				8697F79F1830FB960080BF89 /* JCGradientBackground.m in Sources */,
 				8697F77F1830F5020080BF89 /* HUViewController.m in Sources */,
 				8697F7751830F5020080BF89 /* main.m in Sources */,
@@ -473,6 +499,7 @@
 				8697F7991830F5030080BF89 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8697F79A1830F5030080BF89 /* Build configuration list for PBXNativeTarget "HunchTests" */ = {
 			isa = XCConfigurationList;
@@ -481,6 +508,7 @@
 				8697F79C1830F5030080BF89 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
