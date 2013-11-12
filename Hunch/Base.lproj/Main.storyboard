@@ -84,6 +84,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="buttonHistory" destination="ftc-H4-uCH" id="Wgg-M5-grf"/>
                         <outlet property="labelA" destination="abF-Ae-gLN" id="nSO-WX-fzr"/>
                         <outlet property="labelB" destination="2jL-Bj-9vL" id="aIY-fE-edc"/>
                     </connections>

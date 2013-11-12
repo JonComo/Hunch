@@ -13,11 +13,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="280" height="215"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mJN-8g-Els" userLabel="gradient" customClass="JCGradientBackground">
-                        <rect key="frame" x="0.0" y="0.0" width="280" height="215"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="1" green="0.78817683404397543" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="80" translatesAutoresizingMaskIntoConstraints="NO" id="YDv-Pn-wwu" customClass="HUCircleLabel">
                         <rect key="frame" x="10" y="125" width="80" height="80"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -41,32 +36,28 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEc-3s-Qla">
-                        <rect key="frame" x="202" y="185" width="75" height="30"/>
+                        <rect key="frame" x="191" y="176" width="89" height="39"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="75" id="HoJ-dQ-vuJ"/>
-                            <constraint firstAttribute="height" constant="30" id="eNK-zU-Q8i"/>
+                            <constraint firstAttribute="width" constant="89" id="HoJ-dQ-vuJ"/>
+                            <constraint firstAttribute="height" constant="39" id="eNK-zU-Q8i"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <state key="normal" title="remove">
-                            <color key="titleColor" red="1" green="1" blue="1" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
+                            <color key="titleColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="1" green="0.57347453753381039" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="OEc-3s-Qla" secondAttribute="bottom" id="Ovx-zA-Ya1"/>
-                <constraint firstItem="mJN-8g-Els" firstAttribute="leading" secondItem="VPg-ap-0TN" secondAttribute="leading" id="V4z-Rx-Asn"/>
-                <constraint firstItem="mJN-8g-Els" firstAttribute="top" secondItem="VPg-ap-0TN" secondAttribute="top" id="b1v-WW-4sg"/>
                 <constraint firstAttribute="centerY" secondItem="cjd-dw-JtC" secondAttribute="centerY" id="hhc-sf-JKL"/>
                 <constraint firstAttribute="centerX" secondItem="cjd-dw-JtC" secondAttribute="centerX" id="ipi-fi-yy5"/>
-                <constraint firstAttribute="trailing" secondItem="OEc-3s-Qla" secondAttribute="trailing" constant="3" id="qJF-Wk-ir7"/>
+                <constraint firstAttribute="trailing" secondItem="OEc-3s-Qla" secondAttribute="trailing" id="qJF-Wk-ir7"/>
                 <constraint firstItem="YDv-Pn-wwu" firstAttribute="leading" secondItem="VPg-ap-0TN" secondAttribute="leading" constant="10" id="t1b-Be-s7i"/>
-                <constraint firstAttribute="bottom" secondItem="mJN-8g-Els" secondAttribute="bottom" id="vsB-Ez-zOM"/>
-                <constraint firstAttribute="trailing" secondItem="mJN-8g-Els" secondAttribute="trailing" id="xlt-SC-GyY"/>
                 <constraint firstAttribute="bottom" secondItem="YDv-Pn-wwu" secondAttribute="bottom" constant="10" id="yU8-fa-RD4"/>
             </constraints>
             <size key="customSize" width="280" height="215"/>
@@ -74,7 +65,6 @@
                 <outlet property="buttonRemove" destination="OEc-3s-Qla" id="zWn-cW-NrR"/>
                 <outlet property="labelLosing" destination="YDv-Pn-wwu" id="vX3-PP-Zwy"/>
                 <outlet property="labelWinning" destination="cjd-dw-JtC" id="k8e-fx-BiZ"/>
-                <outlet property="viewGradient" destination="mJN-8g-Els" id="psg-lS-7M0"/>
             </connections>
         </collectionViewCell>
     </objects>

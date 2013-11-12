@@ -16,8 +16,8 @@
 
 #import "HUResultView.h"
 
-#define DEFAULT_A @"Tap to change"
-#define DEFAULT_B @"Tap to change"
+#define DEFAULT_A @"Tap to edit option 1"
+#define DEFAULT_B @"Tap to edit option 2"
 
 #define HISTORY_PATH [NSString stringWithFormat:@"%@/history", [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]]
 
@@ -27,6 +27,8 @@
     
     __weak IBOutlet HUCircleLabel *labelA;
     __weak IBOutlet HUCircleLabel *labelB;
+    
+    __weak IBOutlet UIButton *buttonHistory;
     
     UIView *viewHistory;
     JCCollectionView *collectionViewHistory;
@@ -56,6 +58,15 @@
     [self reset];
     
     history = [self loadHistory];
+    
+    if (history.count != 0)
+    {
+        buttonHistory.alpha = 1;
+        [buttonHistory setEnabled:YES];
+    }else{
+        buttonHistory.alpha = 0;
+        [buttonHistory setEnabled:NO];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -100,21 +111,34 @@
     
     labelA.color = gradient.primary;
     labelB.color = gradient.secondary;
+    
+    [gradient setNeedsDisplay];
 }
 
 -(void)tappedOption:(UITapGestureRecognizer *)tap
 {
-    labelToChange = (UILabel *)tap.view;
+    labelToChange = (HUCircleLabel *)tap.view;
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"First Option" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Set", nil];
-    
-    alert.tag = 100;
-    
-    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-    UITextField *textField = [alert textFieldAtIndex:0];
-    textField.placeholder = @"Option text";
-    
-    [alert show];
+    switch (tap.state) {
+            
+        case UIGestureRecognizerStateRecognized:
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:(labelToChange == labelA) ? @"First Option" : @"Second Option" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Set", nil];
+            
+            alert.tag = 100;
+            
+            alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+            UITextField *textField = [alert textFieldAtIndex:0];
+            textField.placeholder = @"Option text";
+            
+            [alert show];
+        }
+            
+            break;
+            
+        default:
+            break;
+    }
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -149,6 +173,9 @@
     [history insertObject:process atIndex:0];
     
     [NSKeyedArchiver archiveRootObject:history toFile:HISTORY_PATH];
+    
+    buttonHistory.alpha = 1;
+    [buttonHistory setEnabled:YES];
 }
 
 - (IBAction)decide:(id)sender
@@ -203,7 +230,9 @@
     }];
 }
 
-- (IBAction)showHistory:(id)sender {
+- (IBAction)showHistory:(id)sender
+{
+    if (history.count == 0) return;
     
     if (!viewHistory)
     {
@@ -251,7 +280,6 @@
         }];
         
         collectionViewHistory.cellName = @"historyCell";
-        
         
         
         JCGradientBackground *viewBackground = [[JCGradientBackground alloc] initWithFrame:CGRectMake(0, 0, collectionViewHistory.backgroundView.bounds.size.width, collectionViewHistory.backgroundView.bounds.size.height)];
@@ -302,7 +330,17 @@
     int index = button.tag;
     
     [history removeObjectAtIndex:index];
-    [collectionViewHistory reloadData];
+    
+    if (history.count == 0)
+    {
+        [self hideHistory];
+        
+        buttonHistory.alpha = 0;
+        [buttonHistory setEnabled:NO];
+        
+    }else{
+        [collectionViewHistory reloadData];
+    }
     
     [NSKeyedArchiver archiveRootObject:history toFile:HISTORY_PATH];
 }

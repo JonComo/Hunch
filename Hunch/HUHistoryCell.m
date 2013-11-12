@@ -15,8 +15,6 @@
 {
     __weak IBOutlet HUCircleLabel *labelLosing;
     __weak IBOutlet HUCircleLabel *labelWinning;
-    
-    __weak IBOutlet JCGradientBackground *viewGradient;
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -42,14 +40,15 @@
         labelLosing.text = decision[@"B"];
         labelWinning.color = primary;
         labelLosing.color = secondary;
+        
+        self.backgroundColor = primary;
     }else{
         labelLosing.text = decision[@"A"];
         labelWinning.color = secondary;
         labelLosing.color = primary;
+        
+        self.backgroundColor = secondary;
     }
-    
-    viewGradient.primary = primary;
-    viewGradient.secondary = secondary;
 }
 
 /*

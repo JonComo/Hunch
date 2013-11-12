@@ -49,7 +49,7 @@ static UIView *fade;
     [parentView addSubview:resultView];
     
     resultView.alpha = 0.5;
-    resultView.layer.transform = CATransform3DMakeScale(.8, 0.8, 1);
+    resultView.layer.transform = CATransform3DMakeScale(.9, 0.9, 1);
     
     [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         resultView.alpha = 1;

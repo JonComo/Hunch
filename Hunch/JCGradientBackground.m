@@ -13,15 +13,11 @@
 -(void)setPrimary:(UIColor *)primary
 {
     _primary = primary;
-    
-    [self setNeedsDisplay];
 }
 
 -(void)setSecondary:(UIColor *)secondary
 {
     _secondary = secondary;
-    
-    [self setNeedsDisplay];
 }
 
 // Only override drawRect: if you perform custom drawing.
@@ -29,6 +25,7 @@
 - (void)drawRect:(CGRect)rect
 {
     [super drawRect:rect];
+    
     
     //// General Declarations
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
@@ -45,6 +42,58 @@
     CGFloat sR,sG,sB;
     [primary getRed:&sR green:&sG blue:&sB alpha:nil];
     UIColor* secondaryTransparent = [UIColor colorWithRed:sR green:sG blue:sB alpha:0];
+    
+    
+    if (self.simpleMode)
+    {
+        //// Gradient Declarations
+        NSArray* primaryGradientColors = [NSArray arrayWithObjects:
+                                          (id)primary.CGColor,
+                                          (id)primaryTransparent.CGColor, nil];
+        CGFloat primaryGradientLocations[] = {0, 1};
+        CGGradientRef primaryGradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)primaryGradientColors, primaryGradientLocations);
+        
+        //// Frames
+        CGRect frame = CGRectMake(0, 0, 100, 100);
+        
+        
+        //// Rectangle Drawing
+        UIBezierPath* rectanglePath = [UIBezierPath bezierPathWithRect: CGRectMake(CGRectGetMinX(frame), CGRectGetMinY(frame), 100, 100)];
+        [secondary setFill];
+        [rectanglePath fill];
+        [primaryTransparent setStroke];
+        rectanglePath.lineWidth = 1;
+        [rectanglePath stroke];
+        
+        
+        //// Oval Drawing
+        UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(-31.5, -87.5, 375, 375)];
+        CGContextSaveGState(context);
+        [ovalPath addClip];
+        CGContextDrawRadialGradient(context, primaryGradient,
+                                    CGPointMake(156, 100), 0,
+                                    CGPointMake(156, 100), 196.93,
+                                    kCGGradientDrawsBeforeStartLocation | kCGGradientDrawsAfterEndLocation);
+        CGContextRestoreGState(context);
+        
+        
+        //// Oval 2 Drawing
+        UIBezierPath* oval2Path = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(-244.5, -259.5, 375, 375)];
+        CGContextSaveGState(context);
+        [oval2Path addClip];
+        CGContextDrawRadialGradient(context, primaryGradient,
+                                    CGPointMake(-57, -72), 0,
+                                    CGPointMake(-57, -72), 196.93,
+                                    kCGGradientDrawsBeforeStartLocation | kCGGradientDrawsAfterEndLocation);
+        CGContextRestoreGState(context);
+        
+        
+        //// Cleanup
+        CGGradientRelease(primaryGradient);
+        CGColorSpaceRelease(colorSpace);
+        
+        return;
+    }
     
 
     //// Gradient Declarations

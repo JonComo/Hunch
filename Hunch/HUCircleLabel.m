@@ -9,6 +9,10 @@
 #import "HUCircleLabel.h"
 
 @implementation HUCircleLabel
+{
+    UIColor *highlightColor;
+    UIColor *savedColor;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -35,6 +39,15 @@
 {
     _color = color;
     
+    CGFloat red;
+    CGFloat green;
+    CGFloat blue;
+    
+    [color getRed:&red green:&green blue:&blue alpha:nil];
+    
+    savedColor = color;
+    highlightColor = [UIColor colorWithRed:red*1.4 green:green*1.4 blue:blue*1.4 alpha:1];
+    
     [self setNeedsDisplay];
 }
 
@@ -46,6 +59,39 @@
     return [super drawTextInRect:UIEdgeInsetsInsetRect(rect, insets)];
 }
 
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    _color = highlightColor;
+    [self setNeedsDisplay];
+}
+
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [touches anyObject];
+    CGPoint point = [touch locationInView:self];
+    
+    if ([self pointInside:point withEvent:event])
+    {
+        _color = highlightColor;
+        [self setNeedsDisplay];
+    }else{
+        _color = savedColor;
+        [self setNeedsDisplay];
+    }
+}
+
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    _color = savedColor;
+    [self setNeedsDisplay];
+}
+
+-(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    _color = savedColor;
+    [self setNeedsDisplay];
+}
+
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
@@ -53,15 +99,7 @@
     // Drawing code
     
     //// Color Declarations
-    UIColor* fillColor = self.color;
-    
-    CGFloat red;
-    CGFloat green;
-    CGFloat blue;
-    
-    [fillColor getRed:&red green:&green blue:&blue alpha:nil];
-    
-    UIColor *strokeColor = [UIColor colorWithRed:red*1.2 green:green*1.2 blue:blue*1.2 alpha:1];
+    UIColor* fillColor = _color;
     
     //// Frames
     CGRect frame = CGRectMake(3, 3, rect.size.width-6, rect.size.height-6);
@@ -71,7 +109,7 @@
     UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(CGRectGetMinX(frame), CGRectGetMinY(frame), CGRectGetWidth(frame), CGRectGetHeight(frame))];
     ovalPath.lineWidth = 3;
     [fillColor setFill];
-    [strokeColor setStroke];
+    [highlightColor setStroke];
     [ovalPath fill];
     [ovalPath stroke];
     
