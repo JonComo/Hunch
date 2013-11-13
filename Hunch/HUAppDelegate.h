@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define ENTER_BG @"enterBG"
+
 @interface HUAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

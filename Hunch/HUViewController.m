@@ -16,6 +16,8 @@
 
 #import "HUResultView.h"
 
+#import "HUAppDelegate.h"
+
 #define DEFAULT_A @"Tap to edit option 1"
 #define DEFAULT_B @"Tap to edit option 2"
 
@@ -67,6 +69,11 @@
         buttonHistory.alpha = 0;
         [buttonHistory setEnabled:NO];
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:ENTER_BG object:nil queue:nil usingBlock:^(NSNotification *note) {
+        //save history
+        [self saveHistory];
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -166,16 +173,17 @@
 
 -(void)archiveProcess:(NSDictionary *)process
 {
-    history = [self loadHistory];
-    
     if (!history) history = [NSMutableArray array];
     
     [history insertObject:process atIndex:0];
     
-    [NSKeyedArchiver archiveRootObject:history toFile:HISTORY_PATH];
-    
     buttonHistory.alpha = 1;
     [buttonHistory setEnabled:YES];
+}
+
+-(void)saveHistory
+{
+    [NSKeyedArchiver archiveRootObject:history toFile:HISTORY_PATH];
 }
 
 - (IBAction)decide:(id)sender
