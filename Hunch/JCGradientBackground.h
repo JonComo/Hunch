@@ -13,6 +13,4 @@
 @property (nonatomic, strong) UIColor *primary;
 @property (nonatomic, strong) UIColor *secondary;
 
-@property BOOL simpleMode;
-
 @end

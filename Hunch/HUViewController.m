@@ -198,7 +198,7 @@
     UIColor *primary = isA ? view.primary : view.secondary;
     UIColor *secondary = isA ? view.secondary : view.primary;
     
-    [HUResultView showResultWithTitle:@"Result" message:choice color:primary inView:self.view buttonNames:@[@"Bad", @"Good"] action:^(NSInteger buttonIndex) {
+    [HUResultView showResultWithTitle:@"Result" message:choice color:primary inView:self.view buttonNames:@[@"Disagree", @"Agree"] action:^(NSInteger buttonIndex) {
         
         if (buttonIndex == 1)
         {

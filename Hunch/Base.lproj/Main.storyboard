@@ -70,6 +70,17 @@
                                     <action selector="showHistory:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="V7l-qp-TSh"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YouPick" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5s-Fs-fIg">
+                                <rect key="frame" x="71" y="78" width="179" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="6rj-bd-cuj"/>
+                                    <constraint firstAttribute="width" constant="179" id="cbg-HM-8gS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="41"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -77,7 +88,9 @@
                             <constraint firstAttribute="centerY" secondItem="abF-Ae-gLN" secondAttribute="centerY" id="AbX-tD-SOI"/>
                             <constraint firstAttribute="trailing" secondItem="2jL-Bj-9vL" secondAttribute="trailing" constant="10" id="R4h-2d-oy5"/>
                             <constraint firstItem="iYW-Dt-mgL" firstAttribute="top" secondItem="ftc-H4-uCH" secondAttribute="bottom" constant="11" id="a0d-2y-nAM"/>
+                            <constraint firstAttribute="centerX" secondItem="T5s-Fs-fIg" secondAttribute="centerX" constant="-0.5" id="moM-AG-uKD"/>
                             <constraint firstItem="qTx-xH-cob" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="pky-Ls-uez"/>
+                            <constraint firstItem="T5s-Fs-fIg" firstAttribute="top" secondItem="hqd-q9-Dzf" secondAttribute="bottom" constant="58" id="q3M-gO-Pss"/>
                             <constraint firstItem="2jL-Bj-9vL" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="q8h-na-YH6"/>
                             <constraint firstItem="ftc-H4-uCH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="10" id="tUA-Gx-BfV"/>
                             <constraint firstAttribute="bottom" secondItem="qTx-xH-cob" secondAttribute="bottom" constant="20" symbolic="YES" id="vat-Zp-JDd"/>
