@@ -23,7 +23,7 @@
 
 #define HISTORY_PATH [NSString stringWithFormat:@"%@/history", [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]]
 
-@interface HUViewController () <UIAlertViewDelegate>
+@interface HUViewController () <UIAlertViewDelegate, UITextFieldDelegate>
 {
     HUCircleLabel *labelToChange;
     
@@ -130,13 +130,18 @@
             
         case UIGestureRecognizerStateRecognized:
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:(labelToChange == labelA) ? @"First Option" : @"Second Option" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Set", nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:(labelToChange == labelA) ? @"First Choice" : @"Second Choice" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Set", nil];
             
             alert.tag = 100;
             
             alert.alertViewStyle = UIAlertViewStylePlainTextInput;
             UITextField *textField = [alert textFieldAtIndex:0];
             textField.placeholder = @"Option text";
+            
+            textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+            textField.keyboardAppearance = UIKeyboardAppearanceDefault;
+            textField.delegate = self;
+            
             
             [alert show];
         }
@@ -146,6 +151,11 @@
         default:
             break;
     }
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    return NO;
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -204,16 +214,17 @@
     
     NSString *choice = isA ? labelA.text : labelB.text;
     UIColor *primary = isA ? view.primary : view.secondary;
+    UIColor *secondary = isA ? view.secondary : view.primary;
     
-    [HUResultView showResultWithTitle:@"Result" message:choice color:primary inView:self.view buttonNames:@[@"Disagree", @"Agree"] action:^(NSInteger buttonIndex) {
+    [HUResultView showResultWithTitle:@"Result:" message:choice color:primary inView:self.view buttonNames:@[@"Disagree", @"Agree"] action:^(NSInteger buttonIndex) {
         
         if (buttonIndex == 1)
         {
             //good
             
-            [HUResultView showResultWithTitle:@"Great! Then do" message:choice color:primary inView:self.view buttonNames:@[@"Ok"] action:^(NSInteger buttonIndex)
+            [HUResultView showResultWithTitle:@"Great!" message:choice color:primary inView:self.view buttonNames:@[@"Ok"] action:^(NSInteger buttonIndex)
             {
-                [self archiveProcess:@{@"A": labelA.text, @"B": labelB.text, @"RAND": choice, @"FINAL": choice, @"PRIMARY": view.primary, @"SECONDARY": view.secondary}];
+                [self archiveProcess:@{@"A": labelA.text, @"B": labelB.text, @"RAND": choice, @"FINAL": choice, @"PRIMARY": primary, @"SECONDARY": secondary}];
                 
                 [self reset];
                 [HUResultView hideAlertAnimated:YES hideFade:YES];
@@ -224,10 +235,11 @@
             NSString *choice = isA ? labelA.text : labelB.text;
             NSString *opposite = isA ? labelB.text : labelA.text;
             UIColor *primary = isA ? view.secondary : view.primary;
+            UIColor *secondary = isA ? view.primary : view.secondary;
             
-            [HUResultView showResultWithTitle:@"Ok, then do" message:opposite color:primary inView:self.view buttonNames:@[@"Ok"] action:^(NSInteger buttonIndex)
+            [HUResultView showResultWithTitle:@"Ok, then:" message:opposite color:primary inView:self.view buttonNames:@[@"Ok"] action:^(NSInteger buttonIndex)
             {
-                [self archiveProcess:@{@"A": labelA.text, @"B": labelB.text, @"RAND": choice, @"FINAL": opposite, @"PRIMARY": view.primary, @"SECONDARY": view.secondary}];
+                [self archiveProcess:@{@"A": labelA.text, @"B": labelB.text, @"RAND": choice, @"FINAL": opposite, @"PRIMARY": primary, @"SECONDARY": secondary}];
                 
                 [self reset];
                 [HUResultView hideAlertAnimated:YES hideFade:YES];

@@ -38,17 +38,13 @@
     if ([labelWinning.text isEqualToString:decision[@"A"]])
     {
         labelLosing.text = decision[@"B"];
-        labelWinning.color = primary;
-        labelLosing.color = secondary;
-        
-        self.backgroundColor = primary;
     }else{
         labelLosing.text = decision[@"A"];
-        labelWinning.color = secondary;
-        labelLosing.color = primary;
-        
-        self.backgroundColor = secondary;
     }
+    
+    self.backgroundColor = secondary;
+    labelWinning.color = primary;
+    labelLosing.color = secondary;
 }
 
 /*
