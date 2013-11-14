@@ -22,7 +22,7 @@ static UIView *fade;
 +(HUResultView *)showResultWithTitle:(NSString *)title message:(NSString *)message color:(UIColor *)color inView:(UIView *)parentView buttonNames:(NSArray *)buttonNames action:(Action)action
 {
     if (!fade){
-        fade = [[UIView alloc] initWithFrame:parentView.frame];
+        fade = [[UIView alloc] initWithFrame:parentView.bounds];
         fade.backgroundColor = color;
         fade.alpha = 0;
         [parentView addSubview:fade];

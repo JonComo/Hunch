@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8615235B183531D00071E3E0 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8615234E183531D00071E3E0 /* logo@2x.png */; };
 		867B4B5E1832021A00F60F35 /* JCCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 867B4B5D1832021A00F60F35 /* JCCollectionView.m */; };
 		867B4B601832055C00F60F35 /* historyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 867B4B5F1832055C00F60F35 /* historyCell.xib */; };
 		867B4B631832098500F60F35 /* HUHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 867B4B621832098500F60F35 /* HUHistoryCell.m */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8615234E183531D00071E3E0 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		867B4B5C1832021A00F60F35 /* JCCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCCollectionView.h; sourceTree = "<group>"; };
 		867B4B5D1832021A00F60F35 /* JCCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCCollectionView.m; sourceTree = "<group>"; };
 		867B4B5F1832055C00F60F35 /* historyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = historyCell.xib; sourceTree = "<group>"; };
@@ -98,6 +100,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		86152343183531D00071E3E0 /* media */ = {
+			isa = PBXGroup;
+			children = (
+				8615234E183531D00071E3E0 /* logo@2x.png */,
+			);
+			path = media;
+			sourceTree = "<group>";
+		};
 		8697F75C1830F5020080BF89 = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +141,7 @@
 		8697F76E1830F5020080BF89 /* Hunch */ = {
 			isa = PBXGroup;
 			children = (
+				86152343183531D00071E3E0 /* media */,
 				8697F7771830F5020080BF89 /* HUAppDelegate.h */,
 				8697F7781830F5020080BF89 /* HUAppDelegate.m */,
 				8697F77A1830F5020080BF89 /* Main.storyboard */,
@@ -263,6 +274,7 @@
 				867B4B65183213C200F60F35 /* resultView.xib in Resources */,
 				8697F7811830F5030080BF89 /* Images.xcassets in Resources */,
 				8697F7731830F5020080BF89 /* InfoPlist.strings in Resources */,
+				8615235B183531D00071E3E0 /* logo@2x.png in Resources */,
 				867B4B601832055C00F60F35 /* historyCell.xib in Resources */,
 				8697F77C1830F5020080BF89 /* Main.storyboard in Resources */,
 			);

@@ -18,8 +18,8 @@
 
 #import "HUAppDelegate.h"
 
-#define DEFAULT_A @"Tap to edit option 1"
-#define DEFAULT_B @"Tap to edit option 2"
+#define DEFAULT_A @"Tap to Edit"
+#define DEFAULT_B @"Tap to Edit"
 
 #define HISTORY_PATH [NSString stringWithFormat:@"%@/history", [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]]
 
@@ -204,7 +204,6 @@
     
     NSString *choice = isA ? labelA.text : labelB.text;
     UIColor *primary = isA ? view.primary : view.secondary;
-    UIColor *secondary = isA ? view.secondary : view.primary;
     
     [HUResultView showResultWithTitle:@"Result" message:choice color:primary inView:self.view buttonNames:@[@"Disagree", @"Agree"] action:^(NSInteger buttonIndex) {
         
@@ -214,7 +213,7 @@
             
             [HUResultView showResultWithTitle:@"Great! Then do" message:choice color:primary inView:self.view buttonNames:@[@"Ok"] action:^(NSInteger buttonIndex)
             {
-                [self archiveProcess:@{@"A": labelA.text, @"B": labelB.text, @"RAND": choice, @"FINAL": choice, @"PRIMARY": primary, @"SECONDARY": secondary}];
+                [self archiveProcess:@{@"A": labelA.text, @"B": labelB.text, @"RAND": choice, @"FINAL": choice, @"PRIMARY": view.primary, @"SECONDARY": view.secondary}];
                 
                 [self reset];
                 [HUResultView hideAlertAnimated:YES hideFade:YES];
@@ -225,11 +224,10 @@
             NSString *choice = isA ? labelA.text : labelB.text;
             NSString *opposite = isA ? labelB.text : labelA.text;
             UIColor *primary = isA ? view.secondary : view.primary;
-            UIColor *secondary = isA ? view.primary : view.secondary;
             
             [HUResultView showResultWithTitle:@"Ok, then do" message:opposite color:primary inView:self.view buttonNames:@[@"Ok"] action:^(NSInteger buttonIndex)
             {
-                [self archiveProcess:@{@"A": labelA.text, @"B": labelB.text, @"RAND": choice, @"FINAL": opposite, @"PRIMARY": primary, @"SECONDARY": secondary}];
+                [self archiveProcess:@{@"A": labelA.text, @"B": labelB.text, @"RAND": choice, @"FINAL": opposite, @"PRIMARY": view.primary, @"SECONDARY": view.secondary}];
                 
                 [self reset];
                 [HUResultView hideAlertAnimated:YES hideFade:YES];
@@ -246,7 +244,7 @@
     {
         JCGradientBackground *view = (JCGradientBackground *)self.view;
         
-        viewHistory = [[UIView alloc] initWithFrame:self.view.frame];
+        viewHistory = [[UIView alloc] initWithFrame:self.view.bounds];
         
         CGFloat red;
         CGFloat blue;
