@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8615235B183531D00071E3E0 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8615234E183531D00071E3E0 /* logo@2x.png */; };
+		8674D4001836A18000A005AD /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8674D3FF1836A18000A005AD /* MBProgressHUD.m */; };
 		867B4B5E1832021A00F60F35 /* JCCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 867B4B5D1832021A00F60F35 /* JCCollectionView.m */; };
 		867B4B601832055C00F60F35 /* historyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 867B4B5F1832055C00F60F35 /* historyCell.xib */; };
 		867B4B631832098500F60F35 /* HUHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 867B4B621832098500F60F35 /* HUHistoryCell.m */; };
@@ -32,7 +33,6 @@
 		86DFD0DF1836765000BC05DF /* HUColorProbability.m in Sources */ = {isa = PBXBuildFile; fileRef = 86DFD0DE1836765000BC05DF /* HUColorProbability.m */; };
 		86DFD0FD1836808500BC05DF /* ISColorWheel.m in Sources */ = {isa = PBXBuildFile; fileRef = 86DFD0F51836808500BC05DF /* ISColorWheel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		86DFD103183680B500BC05DF /* HUInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86DFD102183680B500BC05DF /* HUInfoViewController.m */; };
-		86DFD106183680E100BC05DF /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 86DFD105183680E100BC05DF /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +47,8 @@
 
 /* Begin PBXFileReference section */
 		8615234E183531D00071E3E0 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
+		8674D3FE1836A18000A005AD /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		8674D3FF1836A18000A005AD /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		867B4B5C1832021A00F60F35 /* JCCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCCollectionView.h; sourceTree = "<group>"; };
 		867B4B5D1832021A00F60F35 /* JCCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCCollectionView.m; sourceTree = "<group>"; };
 		867B4B5F1832055C00F60F35 /* historyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = historyCell.xib; sourceTree = "<group>"; };
@@ -84,8 +86,6 @@
 		86DFD0F51836808500BC05DF /* ISColorWheel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISColorWheel.m; sourceTree = "<group>"; };
 		86DFD101183680B500BC05DF /* HUInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUInfoViewController.h; sourceTree = "<group>"; };
 		86DFD102183680B500BC05DF /* HUInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUInfoViewController.m; sourceTree = "<group>"; };
-		86DFD104183680E100BC05DF /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		86DFD105183680E100BC05DF /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,8 +142,8 @@
 		8697F7671830F5020080BF89 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				86DFD104183680E100BC05DF /* MBProgressHUD.h */,
-				86DFD105183680E100BC05DF /* MBProgressHUD.m */,
+				8674D3FE1836A18000A005AD /* MBProgressHUD.h */,
+				8674D3FF1836A18000A005AD /* MBProgressHUD.m */,
 				86DFD0E31836808500BC05DF /* iOS-color-wheel-master */,
 				8697F7681830F5020080BF89 /* Foundation.framework */,
 				8697F76A1830F5020080BF89 /* CoreGraphics.framework */,
@@ -338,7 +338,7 @@
 				867B4B631832098500F60F35 /* HUHistoryCell.m in Sources */,
 				8697F79F1830FB960080BF89 /* JCGradientBackground.m in Sources */,
 				8697F77F1830F5020080BF89 /* HUViewController.m in Sources */,
-				86DFD106183680E100BC05DF /* MBProgressHUD.m in Sources */,
+				8674D4001836A18000A005AD /* MBProgressHUD.m in Sources */,
 				86DFD0DF1836765000BC05DF /* HUColorProbability.m in Sources */,
 				8697F7751830F5020080BF89 /* main.m in Sources */,
 				86DFD0FD1836808500BC05DF /* ISColorWheel.m in Sources */,

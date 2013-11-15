@@ -55,7 +55,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ftc-H4-uCH">
-                                <rect key="frame" x="0.0" y="524" width="80" height="44"/>
+                                <rect key="frame" x="20" y="504" width="80" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="PXf-UW-cXS"/>
@@ -104,9 +104,9 @@
                             <constraint firstAttribute="centerY" secondItem="abF-Ae-gLN" secondAttribute="centerY" id="AbX-tD-SOI"/>
                             <constraint firstAttribute="trailing" secondItem="2jL-Bj-9vL" secondAttribute="trailing" constant="10" id="R4h-2d-oy5"/>
                             <constraint firstItem="iYW-Dt-mgL" firstAttribute="top" secondItem="9r6-he-uuP" secondAttribute="bottom" constant="20" id="ZwD-kD-KMx"/>
-                            <constraint firstAttribute="bottom" secondItem="ftc-H4-uCH" secondAttribute="bottom" id="aGk-it-nbp"/>
+                            <constraint firstAttribute="bottom" secondItem="ftc-H4-uCH" secondAttribute="bottom" constant="20" id="aGk-it-nbp"/>
                             <constraint firstItem="qTx-xH-cob" firstAttribute="top" secondItem="2jL-Bj-9vL" secondAttribute="bottom" constant="44" id="fnP-zj-Ce3"/>
-                            <constraint firstItem="ftc-H4-uCH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="je1-EW-sOM"/>
+                            <constraint firstItem="ftc-H4-uCH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="je1-EW-sOM"/>
                             <constraint firstItem="qTx-xH-cob" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="pky-Ls-uez"/>
                             <constraint firstAttribute="trailing" secondItem="9r6-he-uuP" secondAttribute="trailing" constant="20" id="q3J-rE-Qd1"/>
                             <constraint firstItem="2jL-Bj-9vL" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="q8h-na-YH6"/>
@@ -180,7 +180,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ddy-KY-Qjk">
-                                <rect key="frame" x="212" y="504" width="88" height="44"/>
+                                <rect key="frame" x="188" y="504" width="88" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Rwv-A3-1nL"/>
@@ -316,7 +316,7 @@ YouPick presents you with the right answer, every time.
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Jmf-nC-CHa" secondAttribute="trailing" constant="33" id="DSF-vg-5Tc"/>
-                            <constraint firstAttribute="trailing" secondItem="Ddy-KY-Qjk" secondAttribute="trailing" constant="20" id="aaH-36-f7W"/>
+                            <constraint firstAttribute="trailing" secondItem="Ddy-KY-Qjk" secondAttribute="trailing" constant="44" id="aaH-36-f7W"/>
                             <constraint firstItem="97P-xi-2zb" firstAttribute="top" secondItem="Ddy-KY-Qjk" secondAttribute="bottom" constant="20" id="add-ey-iNX"/>
                             <constraint firstItem="1As-xA-Bty" firstAttribute="top" secondItem="80D-PR-QFc" secondAttribute="top" constant="44" id="c2Y-67-L94"/>
                             <constraint firstItem="Jmf-nC-CHa" firstAttribute="top" secondItem="1As-xA-Bty" secondAttribute="bottom" constant="29" id="di2-Bh-Fgq"/>
