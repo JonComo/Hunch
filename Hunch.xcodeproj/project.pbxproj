@@ -29,6 +29,10 @@
 		8697F7941830F5030080BF89 /* HunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8697F7931830F5030080BF89 /* HunchTests.m */; };
 		8697F79F1830FB960080BF89 /* JCGradientBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 8697F79E1830FB960080BF89 /* JCGradientBackground.m */; };
 		8697F7A21830FFA50080BF89 /* HUCircleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8697F7A11830FFA50080BF89 /* HUCircleLabel.m */; };
+		86DFD0DF1836765000BC05DF /* HUColorProbability.m in Sources */ = {isa = PBXBuildFile; fileRef = 86DFD0DE1836765000BC05DF /* HUColorProbability.m */; };
+		86DFD0FD1836808500BC05DF /* ISColorWheel.m in Sources */ = {isa = PBXBuildFile; fileRef = 86DFD0F51836808500BC05DF /* ISColorWheel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		86DFD103183680B500BC05DF /* HUInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86DFD102183680B500BC05DF /* HUInfoViewController.m */; };
+		86DFD106183680E100BC05DF /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 86DFD105183680E100BC05DF /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +78,14 @@
 		8697F79E1830FB960080BF89 /* JCGradientBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCGradientBackground.m; sourceTree = "<group>"; };
 		8697F7A01830FFA50080BF89 /* HUCircleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUCircleLabel.h; sourceTree = "<group>"; };
 		8697F7A11830FFA50080BF89 /* HUCircleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUCircleLabel.m; sourceTree = "<group>"; };
+		86DFD0DD1836765000BC05DF /* HUColorProbability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUColorProbability.h; sourceTree = "<group>"; };
+		86DFD0DE1836765000BC05DF /* HUColorProbability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUColorProbability.m; sourceTree = "<group>"; };
+		86DFD0F41836808500BC05DF /* ISColorWheel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISColorWheel.h; sourceTree = "<group>"; };
+		86DFD0F51836808500BC05DF /* ISColorWheel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISColorWheel.m; sourceTree = "<group>"; };
+		86DFD101183680B500BC05DF /* HUInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUInfoViewController.h; sourceTree = "<group>"; };
+		86DFD102183680B500BC05DF /* HUInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUInfoViewController.m; sourceTree = "<group>"; };
+		86DFD104183680E100BC05DF /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		86DFD105183680E100BC05DF /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +142,9 @@
 		8697F7671830F5020080BF89 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				86DFD104183680E100BC05DF /* MBProgressHUD.h */,
+				86DFD105183680E100BC05DF /* MBProgressHUD.m */,
+				86DFD0E31836808500BC05DF /* iOS-color-wheel-master */,
 				8697F7681830F5020080BF89 /* Foundation.framework */,
 				8697F76A1830F5020080BF89 /* CoreGraphics.framework */,
 				8697F76C1830F5020080BF89 /* UIKit.framework */,
@@ -147,6 +162,8 @@
 				8697F77A1830F5020080BF89 /* Main.storyboard */,
 				8697F77D1830F5020080BF89 /* HUViewController.h */,
 				8697F77E1830F5020080BF89 /* HUViewController.m */,
+				86DFD101183680B500BC05DF /* HUInfoViewController.h */,
+				86DFD102183680B500BC05DF /* HUInfoViewController.m */,
 				8697F7801830F5030080BF89 /* Images.xcassets */,
 				8697F76F1830F5020080BF89 /* Supporting Files */,
 				8697F7A01830FFA50080BF89 /* HUCircleLabel.h */,
@@ -161,6 +178,8 @@
 				867B4B661832149900F60F35 /* HUResultView.h */,
 				867B4B671832149900F60F35 /* HUResultView.m */,
 				867B4B64183213C200F60F35 /* resultView.xib */,
+				86DFD0DD1836765000BC05DF /* HUColorProbability.h */,
+				86DFD0DE1836765000BC05DF /* HUColorProbability.m */,
 			);
 			path = Hunch;
 			sourceTree = "<group>";
@@ -192,6 +211,23 @@
 				8697F7901830F5030080BF89 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		86DFD0E31836808500BC05DF /* iOS-color-wheel-master */ = {
+			isa = PBXGroup;
+			children = (
+				86DFD0F31836808500BC05DF /* Source */,
+			);
+			path = "iOS-color-wheel-master";
+			sourceTree = "<group>";
+		};
+		86DFD0F31836808500BC05DF /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				86DFD0F41836808500BC05DF /* ISColorWheel.h */,
+				86DFD0F51836808500BC05DF /* ISColorWheel.m */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,11 +333,15 @@
 			files = (
 				867B4B681832149900F60F35 /* HUResultView.m in Sources */,
 				8697F7A21830FFA50080BF89 /* HUCircleLabel.m in Sources */,
+				86DFD103183680B500BC05DF /* HUInfoViewController.m in Sources */,
 				867B4B5E1832021A00F60F35 /* JCCollectionView.m in Sources */,
 				867B4B631832098500F60F35 /* HUHistoryCell.m in Sources */,
 				8697F79F1830FB960080BF89 /* JCGradientBackground.m in Sources */,
 				8697F77F1830F5020080BF89 /* HUViewController.m in Sources */,
+				86DFD106183680E100BC05DF /* MBProgressHUD.m in Sources */,
+				86DFD0DF1836765000BC05DF /* HUColorProbability.m in Sources */,
 				8697F7751830F5020080BF89 /* main.m in Sources */,
+				86DFD0FD1836808500BC05DF /* ISColorWheel.m in Sources */,
 				8697F7791830F5020080BF89 /* HUAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

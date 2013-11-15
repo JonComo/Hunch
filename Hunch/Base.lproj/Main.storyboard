@@ -78,18 +78,37 @@
                                     <constraint firstAttribute="height" constant="120" id="URV-ul-5hk"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9r6-he-uuP">
+                                <rect key="frame" x="187" y="504" width="113" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="113" id="Qea-4r-U7J"/>
+                                    <constraint firstAttribute="height" constant="44" id="Vh6-g7-cfu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Instructions">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BW9-JZ-q8H" kind="modal" modalTransitionStyle="crossDissolve" id="fyp-Qz-50R"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="abF-Ae-gLN" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="10" id="40h-jz-nSd"/>
                             <constraint firstItem="2jL-Bj-9vL" firstAttribute="top" secondItem="GfW-kl-baw" secondAttribute="bottom" constant="12" id="4En-Ob-dND"/>
                             <constraint firstItem="GfW-kl-baw" firstAttribute="centerX" secondItem="qTx-xH-cob" secondAttribute="centerX" id="5Ik-ta-fbE"/>
                             <constraint firstAttribute="centerY" secondItem="abF-Ae-gLN" secondAttribute="centerY" id="AbX-tD-SOI"/>
                             <constraint firstAttribute="trailing" secondItem="2jL-Bj-9vL" secondAttribute="trailing" constant="10" id="R4h-2d-oy5"/>
+                            <constraint firstItem="iYW-Dt-mgL" firstAttribute="top" secondItem="9r6-he-uuP" secondAttribute="bottom" constant="20" id="ZwD-kD-KMx"/>
                             <constraint firstAttribute="bottom" secondItem="ftc-H4-uCH" secondAttribute="bottom" id="aGk-it-nbp"/>
                             <constraint firstItem="qTx-xH-cob" firstAttribute="top" secondItem="2jL-Bj-9vL" secondAttribute="bottom" constant="44" id="fnP-zj-Ce3"/>
                             <constraint firstItem="ftc-H4-uCH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="je1-EW-sOM"/>
                             <constraint firstItem="qTx-xH-cob" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="pky-Ls-uez"/>
+                            <constraint firstAttribute="trailing" secondItem="9r6-he-uuP" secondAttribute="trailing" constant="20" id="q3J-rE-Qd1"/>
                             <constraint firstItem="2jL-Bj-9vL" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="q8h-na-YH6"/>
                         </constraints>
                     </view>
@@ -102,6 +121,224 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="101" y="31"/>
+        </scene>
+        <!--Info View Controller-->
+        <scene sceneID="UdP-es-3Qk">
+            <objects>
+                <viewController storyboardIdentifier="infoVC" id="BW9-JZ-q8H" customClass="HUInfoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Czd-rI-8Ob"/>
+                        <viewControllerLayoutGuide type="bottom" id="97P-xi-2zb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="80D-PR-QFc" customClass="JCGradientBackground">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wvU-mv-KRI">
+                                <rect key="frame" x="33" y="446" width="110" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="tZu-mx-9qR"/>
+                                    <constraint firstAttribute="height" constant="40" id="vkn-sF-WVM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Set Color">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="setColor1:" destination="BW9-JZ-q8H" eventType="touchUpInside" id="Al3-Lq-JQN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jmf-nC-CHa">
+                                <rect key="frame" x="177" y="446" width="110" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="jJe-VC-x92"/>
+                                    <constraint firstAttribute="height" constant="40" id="vLz-b4-BRJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Set Color">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="setColor2:" destination="BW9-JZ-q8H" eventType="touchUpInside" id="48e-Cd-cR0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VJM-W3-2ZH">
+                                <rect key="frame" x="20" y="504" width="136" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="136" id="V8c-hR-lkj"/>
+                                    <constraint firstAttribute="height" constant="44" id="axy-5N-9Z3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Reset Pattern">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetPattern:" destination="BW9-JZ-q8H" eventType="touchUpInside" id="CFK-uy-0S9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ddy-KY-Qjk">
+                                <rect key="frame" x="212" y="504" width="88" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Rwv-A3-1nL"/>
+                                    <constraint firstAttribute="width" constant="88" id="vBq-uS-g4e"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismiss:" destination="BW9-JZ-q8H" eventType="touchUpInside" id="SBh-b2-WWz"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1As-xA-Bty" userLabel="maskView">
+                                <rect key="frame" x="20" y="44" width="280" height="373"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4IT-Tc-uaJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="373"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                        <attributedString key="attributedText">
+                                            <fragment>
+                                                <string key="content">
+YouPick - Lets you make the right choice, every time! 
+</string>
+                                                <attributes>
+                                                    <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <font key="NSFont" size="16" name="Helvetica-Bold"/>
+                                                    <real key="NSKern" value="0.0"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="36"/>
+                                                    <color key="NSStrokeColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment>
+                                                <string key="content">
+YouPick is based on a simple and elegant fact: your intuition is statistically more right than wrong. 
+
+YouPick works in two ways to harness your instinctual reasoning power.
+
+</string>
+                                                <attributes>
+                                                    <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <font key="NSFont" size="16" name="Helvetica"/>
+                                                    <real key="NSKern" value="0.0"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="36"/>
+                                                    <color key="NSStrokeColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment>
+                                                <string key="content">The first way is fairly straightforward but powerful:
+</string>
+                                                <attributes>
+                                                    <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <font key="NSFont" size="16" name="Helvetica-Bold"/>
+                                                    <real key="NSKern" value="0.0"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="36"/>
+                                                    <color key="NSStrokeColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment>
+                                                <string key="content">
+1. Enter two choices that you just can't pick between. 
+
+2. Hit Decide, and YouPick will give you a random answer. 
+
+3. Now this may seem counterintuitive, but you can approve or reject the answer! Tell YouPick if you agree or disagree with its choice. 
+
+Love the answer YouPick gave? Great, you're done! 
+
+However, if you feel even a tiny bit of regret, then pick the other choice. You used the power of your implicit reasoning (your intuition) and can see what you actually wanted to do. 
+
+</string>
+                                                <attributes>
+                                                    <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <font key="NSFont" size="16" name="Helvetica"/>
+                                                    <real key="NSKern" value="0.0"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="36"/>
+                                                    <color key="NSStrokeColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment>
+                                                <string key="content">The second way is more subtle:
+</string>
+                                                <attributes>
+                                                    <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <font key="NSFont" size="16" name="Helvetica-Bold"/>
+                                                    <real key="NSKern" value="0.0"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="36"/>
+                                                    <color key="NSStrokeColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment>
+                                                <string key="content">
+Color matters! One color is more likely to be chosen when YouPick decides.
+
+Your unconscious will pick up on this pattern after a few decisions, and will guide you to put your desired choice in the more likely chosen color. All this happens behind the scenes in your brain, without you even knowing!
+
+You can change the default colors below and reset the pattern YouPick uses if you believe you’ve figured out which color is more likely. (Don’t reset the pattern too much or you wont give your unconscious enough time to recognize it!)
+
+I was inspired by "Incognito: The Secret Lives of the Brain," by David Eagleman, wherein he describes the processes that YouPick is based on:
+
+The first process YouPick uses came from Eagleman suggesting you flip a coin to make a decision. If you feel even a small amount of regret with the result, you've “felt” your unconscious reasoning and should pick the other choice.
+
+The second process is based on an interesting experiment involving two decks of cards. Participants were asked to draw from both decks, each containing “good” and “bad” cards. One deck had more good cards than bad and the other had more bad than good. The participant’s unconsciously figured out the best deck to draw from in half the time they consciously did! In place of cards, YouPick uses colors, where one is more likely to be shown.
+
+We're all told to trust our intuition, YouPick just makes it fun and easy to do so! 
+
+YouPick presents you with the right answer, every time.
+</string>
+                                                <attributes>
+                                                    <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <font key="NSFont" size="16" name="Helvetica"/>
+                                                    <real key="NSKern" value="0.0"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="36"/>
+                                                    <color key="NSStrokeColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="4IT-Tc-uaJ" firstAttribute="leading" secondItem="1As-xA-Bty" secondAttribute="leading" id="82d-4W-olg"/>
+                                    <constraint firstAttribute="trailing" secondItem="4IT-Tc-uaJ" secondAttribute="trailing" id="Q2e-73-7g3"/>
+                                    <constraint firstAttribute="bottom" secondItem="4IT-Tc-uaJ" secondAttribute="bottom" id="tdl-JQ-VC5"/>
+                                    <constraint firstItem="4IT-Tc-uaJ" firstAttribute="top" secondItem="1As-xA-Bty" secondAttribute="top" id="xfa-Hu-sw5"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Jmf-nC-CHa" secondAttribute="trailing" constant="33" id="DSF-vg-5Tc"/>
+                            <constraint firstAttribute="trailing" secondItem="Ddy-KY-Qjk" secondAttribute="trailing" constant="20" id="aaH-36-f7W"/>
+                            <constraint firstItem="97P-xi-2zb" firstAttribute="top" secondItem="Ddy-KY-Qjk" secondAttribute="bottom" constant="20" id="add-ey-iNX"/>
+                            <constraint firstItem="1As-xA-Bty" firstAttribute="top" secondItem="80D-PR-QFc" secondAttribute="top" constant="44" id="c2Y-67-L94"/>
+                            <constraint firstItem="Jmf-nC-CHa" firstAttribute="top" secondItem="1As-xA-Bty" secondAttribute="bottom" constant="29" id="di2-Bh-Fgq"/>
+                            <constraint firstItem="wvU-mv-KRI" firstAttribute="leading" secondItem="80D-PR-QFc" secondAttribute="leading" constant="33" id="fzZ-bg-JDK"/>
+                            <constraint firstAttribute="trailing" secondItem="1As-xA-Bty" secondAttribute="trailing" constant="20" id="jNJ-D0-HMb"/>
+                            <constraint firstItem="97P-xi-2zb" firstAttribute="top" secondItem="VJM-W3-2ZH" secondAttribute="bottom" constant="20" id="pwU-EW-Euu"/>
+                            <constraint firstItem="VJM-W3-2ZH" firstAttribute="leading" secondItem="80D-PR-QFc" secondAttribute="leading" constant="20" id="vay-Qh-ceG"/>
+                            <constraint firstItem="97P-xi-2zb" firstAttribute="top" secondItem="wvU-mv-KRI" secondAttribute="bottom" constant="82" id="x2u-5F-zrg"/>
+                            <constraint firstItem="1As-xA-Bty" firstAttribute="leading" secondItem="80D-PR-QFc" secondAttribute="leading" constant="20" id="zJA-Gf-WuV"/>
+                            <constraint firstItem="97P-xi-2zb" firstAttribute="top" secondItem="Jmf-nC-CHa" secondAttribute="bottom" constant="82" id="zi2-Hy-eOe"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="buttonColor1" destination="wvU-mv-KRI" id="Zc8-Bq-SCt"/>
+                        <outlet property="buttonColor2" destination="Jmf-nC-CHa" id="y0o-PQ-N3n"/>
+                        <outlet property="maskView" destination="1As-xA-Bty" id="REA-Mb-tRw"/>
+                        <outlet property="textViewInfo" destination="4IT-Tc-uaJ" id="cVD-Vc-WWu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sj2-ms-4FE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="498" y="31"/>
         </scene>
     </scenes>
     <resources>

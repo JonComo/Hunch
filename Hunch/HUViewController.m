@@ -18,6 +18,8 @@
 
 #import "HUAppDelegate.h"
 
+#import "HUColorProbability.h"
+
 #define DEFAULT_A @"Tap to Edit"
 #define DEFAULT_B @"Tap to Edit"
 
@@ -76,6 +78,13 @@
     }];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self updateColors];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -87,34 +96,28 @@
     return UIStatusBarStyleLightContent;
 }
 
--(float)randomFloat
-{
-    return (float)(arc4random()%100)/100.0f;
-}
-
--(UIColor *)randomColor
-{
-    float r = [self randomFloat]*0.8;
-    float g = [self randomFloat]*0.8;
-    float b = [self randomFloat]*0.8;
-    
-    return [UIColor colorWithRed:r green:g blue:b alpha:1];
-}
-
 -(void)reset
 {
-    [self changeColors];
+    [self updateColors];
     
     labelA.text = DEFAULT_A;
     labelB.text = DEFAULT_B;
 }
 
--(void)changeColors
+-(void)updateColors
 {
     JCGradientBackground *gradient = (JCGradientBackground *)self.view;
     
-    gradient.primary = [self randomColor];
-    gradient.secondary = [self randomColor];
+    NSArray *userColors = [HUColorProbability userColors];
+    
+    if (arc4random()%2)
+    {
+        gradient.primary = userColors[0];
+        gradient.secondary = userColors[1];
+    }else{
+        gradient.primary = userColors[1];
+        gradient.secondary = userColors[0];
+    }
     
     labelA.color = gradient.primary;
     labelB.color = gradient.secondary;
@@ -130,7 +133,7 @@
             
         case UIGestureRecognizerStateRecognized:
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:(labelToChange == labelA) ? @"First Choice" : @"Second Choice" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Set", nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Choice" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Set", nil];
             
             alert.tag = 100;
             
@@ -198,19 +201,34 @@
 
 - (IBAction)decide:(id)sender
 {
-    BOOL isA;
+    BOOL isA = NO;
+    
+    UIColor *mostlyWinningColor = [HUColorProbability winningColor];
+    
+    if (arc4random()%100 > 40)
+    {
+        //mostly winning color should be shown
+        
+        if ([labelA.color isEqual:mostlyWinningColor])
+        {
+            isA = YES;
+        }else{
+            isA = NO;
+        }
+        
+    }else{
+        //mostly losing color should be shown
+        
+        if ([labelA.color isEqual:mostlyWinningColor])
+        {
+            isA = NO;
+        }else{
+            isA = YES;
+        }
+        
+    }
     
     JCGradientBackground *view = (JCGradientBackground *)self.view;
-    
-    int random = arc4random()%2;
-    if (random)
-    {
-        //A
-        isA = YES;
-    }else{
-        //B
-        isA = NO;
-    }
     
     NSString *choice = isA ? labelA.text : labelB.text;
     UIColor *primary = isA ? view.primary : view.secondary;
@@ -299,6 +317,7 @@
         
         collectionViewHistory.cellName = @"historyCell";
         
+        collectionViewHistory.alwaysBounceVertical = YES;
         
         JCGradientBackground *viewBackground = [[JCGradientBackground alloc] initWithFrame:CGRectMake(0, 0, collectionViewHistory.backgroundView.bounds.size.width, collectionViewHistory.backgroundView.bounds.size.height)];
         

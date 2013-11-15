@@ -8,16 +8,32 @@
 
 #import "JCGradientBackground.h"
 
+static UIColor *staticPrimary;
+static UIColor *staticSecondary;
+
 @implementation JCGradientBackground
+
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder:aDecoder]) {
+        //init
+        self.primary = staticPrimary;
+        self.secondary = staticSecondary;
+    }
+    
+    return self;
+}
 
 -(void)setPrimary:(UIColor *)primary
 {
     _primary = primary;
+    staticPrimary = primary;
 }
 
 -(void)setSecondary:(UIColor *)secondary
 {
     _secondary = secondary;
+    staticSecondary = secondary;
 }
 
 // Only override drawRect: if you perform custom drawing.
