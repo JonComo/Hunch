@@ -20,8 +20,7 @@
 
 #import "HUColorProbability.h"
 
-#define DEFAULT_A @"Tap to Edit"
-#define DEFAULT_B @"Tap to Edit"
+#define DEFAULT_TEXT @"Tap to Edit"
 
 #define HISTORY_PATH [NSString stringWithFormat:@"%@/history", [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]]
 
@@ -100,8 +99,8 @@
 {
     [self updateColors];
     
-    labelA.text = DEFAULT_A;
-    labelB.text = DEFAULT_B;
+    labelA.text = DEFAULT_TEXT;
+    labelB.text = DEFAULT_TEXT;
 }
 
 -(void)updateColors
@@ -139,7 +138,11 @@
             
             alert.alertViewStyle = UIAlertViewStylePlainTextInput;
             UITextField *textField = [alert textFieldAtIndex:0];
-            textField.placeholder = @"Option text";
+            textField.placeholder = @"Choice";
+            
+            if (![labelToChange.text isEqualToString:DEFAULT_TEXT] && labelToChange.text.length > 0){
+                textField.text = labelToChange.text;
+            }
             
             textField.clearButtonMode = UITextFieldViewModeWhileEditing;
             textField.keyboardAppearance = UIKeyboardAppearanceDefault;
@@ -168,7 +171,12 @@
         if (buttonIndex == 1) {
             UITextField *textField = (UITextField *)[alertView textFieldAtIndex:0];
             
-            labelToChange.text = textField.text;
+            if (textField.text.length > 0)
+            {
+                labelToChange.text = textField.text;
+            }else{
+                labelToChange.text = DEFAULT_TEXT;
+            }
         }
     }
 }
