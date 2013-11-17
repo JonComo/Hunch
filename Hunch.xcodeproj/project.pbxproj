@@ -278,6 +278,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Jon Como";
 				TargetAttributes = {
+					8697F7641830F5020080BF89 = {
+						DevelopmentTeam = 5C23H8QH97;
+					};
 					8697F7851830F5030080BF89 = {
 						TestTargetID = 8697F7641830F5020080BF89;
 					};
@@ -469,10 +472,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Hunch/Hunch-Prefix.pch";
 				INFOPLIST_FILE = "Hunch/Hunch-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -482,10 +488,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Hunch/Hunch-Prefix.pch";
 				INFOPLIST_FILE = "Hunch/Hunch-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

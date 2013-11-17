@@ -142,7 +142,6 @@
     wheel.delegate = self;
     wheel.continuous = YES;
     
-    [wheel setCurrentColor:sender.backgroundColor];
     [wheel setNeedsDisplay];
     
     hud.customView = wheel;
