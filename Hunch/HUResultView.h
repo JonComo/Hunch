@@ -18,6 +18,8 @@ typedef void (^Action)(NSInteger buttonIndex);
 
 @property (nonatomic, strong) Action action;
 
+@property (nonatomic, strong) NSDictionary *decision;
+
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *message;
 

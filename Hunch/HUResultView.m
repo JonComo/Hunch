@@ -10,6 +10,8 @@
 
 #import "HUCircleLabel.h"
 
+#import "HUTweetManager.h"
+
 static HUResultView *resultView;
 static UIView *fade;
 
@@ -17,6 +19,9 @@ static UIView *fade;
 {
     __weak IBOutlet UILabel *labelTitle;
     __weak IBOutlet HUCircleLabel *labelResult;
+    
+    __weak IBOutlet UIButton *buttonTweet;
+    
 }
 
 +(HUResultView *)showResultWithTitle:(NSString *)title message:(NSString *)message color:(UIColor *)color inView:(UIView *)parentView buttonNames:(NSArray *)buttonNames action:(Action)action
@@ -106,17 +111,17 @@ static UIView *fade;
     labelResult.text = message;
 }
 
+-(void)setDecision:(NSDictionary *)decision
+{
+    _decision = decision;
+    
+    buttonTweet.alpha = 1;
+    [buttonTweet setUserInteractionEnabled:YES];
+}
+
 -(void)setButtonNames:(NSArray *)buttonNames
 {
     _buttonNames = buttonNames;
-    
-    for (UIView *subview in self.subviews)
-    {
-        if ([subview isKindOfClass:[UIButton class]])
-        {
-            [subview removeFromSuperview];
-        }
-    }
     
     if (buttonNames.count == 0) return;
     
@@ -130,7 +135,7 @@ static UIView *fade;
         button.tag = x;
         [button addTarget:self action:@selector(hitButton:) forControlEvents:UIControlEventTouchUpInside];
         
-        button.frame = CGRectMake(x * width, 236, width, 44);
+        button.frame = CGRectMake(x * width, 224, width, 44);
         
         [button.titleLabel setFont:[UIFont systemFontOfSize:20]];
         [button setTitle:name forState:UIControlStateNormal];
@@ -152,6 +157,11 @@ static UIView *fade;
 -(void)hitButton:(UIButton *)button
 {
     if (self.action) self.action(button.tag);
+}
+
+- (IBAction)tweet:(id)sender
+{
+    [HUTweetManager composeTweetWithDecision:self.decision];
 }
 
 /*

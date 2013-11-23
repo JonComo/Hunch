@@ -11,6 +11,8 @@
 #import "JCGradientBackground.h"
 #import "HUCircleLabel.h"
 
+#import "HUTweetManager.h"
+
 @implementation HUHistoryCell
 {
     __weak IBOutlet HUCircleLabel *labelLosing;
@@ -45,6 +47,11 @@
     self.backgroundColor = secondary;
     labelWinning.color = primary;
     labelLosing.color = secondary;
+}
+
+- (IBAction)tweetDecision:(id)sender
+{
+    [HUTweetManager composeTweetWithDecision:self.decision];
 }
 
 /*

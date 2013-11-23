@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8615235B183531D00071E3E0 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8615234E183531D00071E3E0 /* logo@2x.png */; };
 		861CB9081840F50300E7CC9F /* HUCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 861CB9071840F50300E7CC9F /* HUCircleView.m */; };
+		861CB90A1840FE5D00E7CC9F /* twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 861CB9091840FE5D00E7CC9F /* twitter@2x.png */; };
+		861CB90D1840FF0C00E7CC9F /* HUTweetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 861CB90C1840FF0C00E7CC9F /* HUTweetManager.m */; };
 		8674D4001836A18000A005AD /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8674D3FF1836A18000A005AD /* MBProgressHUD.m */; };
 		867B4B5E1832021A00F60F35 /* JCCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 867B4B5D1832021A00F60F35 /* JCCollectionView.m */; };
 		867B4B601832055C00F60F35 /* historyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 867B4B5F1832055C00F60F35 /* historyCell.xib */; };
@@ -50,6 +52,9 @@
 		8615234E183531D00071E3E0 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		861CB9061840F50300E7CC9F /* HUCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUCircleView.h; sourceTree = "<group>"; };
 		861CB9071840F50300E7CC9F /* HUCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUCircleView.m; sourceTree = "<group>"; };
+		861CB9091840FE5D00E7CC9F /* twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter@2x.png"; sourceTree = "<group>"; };
+		861CB90B1840FF0C00E7CC9F /* HUTweetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUTweetManager.h; sourceTree = "<group>"; };
+		861CB90C1840FF0C00E7CC9F /* HUTweetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUTweetManager.m; sourceTree = "<group>"; };
 		8674D3FE1836A18000A005AD /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		8674D3FF1836A18000A005AD /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		867B4B5C1832021A00F60F35 /* JCCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCCollectionView.h; sourceTree = "<group>"; };
@@ -118,6 +123,7 @@
 		86152343183531D00071E3E0 /* media */ = {
 			isa = PBXGroup;
 			children = (
+				861CB9091840FE5D00E7CC9F /* twitter@2x.png */,
 				8615234E183531D00071E3E0 /* logo@2x.png */,
 			);
 			path = media;
@@ -185,6 +191,8 @@
 				867B4B64183213C200F60F35 /* resultView.xib */,
 				86DFD0DD1836765000BC05DF /* HUColorProbability.h */,
 				86DFD0DE1836765000BC05DF /* HUColorProbability.m */,
+				861CB90B1840FF0C00E7CC9F /* HUTweetManager.h */,
+				861CB90C1840FF0C00E7CC9F /* HUTweetManager.m */,
 			);
 			path = Hunch;
 			sourceTree = "<group>";
@@ -321,6 +329,7 @@
 				8615235B183531D00071E3E0 /* logo@2x.png in Resources */,
 				867B4B601832055C00F60F35 /* historyCell.xib in Resources */,
 				8697F77C1830F5020080BF89 /* Main.storyboard in Resources */,
+				861CB90A1840FE5D00E7CC9F /* twitter@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +352,7 @@
 				8697F7A21830FFA50080BF89 /* HUCircleLabel.m in Sources */,
 				86DFD103183680B500BC05DF /* HUInfoViewController.m in Sources */,
 				867B4B5E1832021A00F60F35 /* JCCollectionView.m in Sources */,
+				861CB90D1840FF0C00E7CC9F /* HUTweetManager.m in Sources */,
 				867B4B631832098500F60F35 /* HUHistoryCell.m in Sources */,
 				8697F79F1830FB960080BF89 /* JCGradientBackground.m in Sources */,
 				8697F77F1830F5020080BF89 /* HUViewController.m in Sources */,

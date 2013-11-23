@@ -21,7 +21,7 @@
 
 #import "HUCircleView.h"
 
-#define DEFAULT_TEXT @"Tap to Edit"
+#define DEFAULT_TEXT @"Choice"
 
 #define HISTORY_PATH [NSString stringWithFormat:@"%@/history", [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]]
 
@@ -80,6 +80,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
     
+    [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)]];
+    
     [textViewA addObserver:self forKeyPath:@"contentSize" options:(NSKeyValueObservingOptionNew) context:NULL];
     [textViewB addObserver:self forKeyPath:@"contentSize" options:(NSKeyValueObservingOptionNew) context:NULL];
 }
@@ -94,6 +96,9 @@
     [super viewWillAppear:animated];
     
     [self updateColors];
+    
+    [self centerTextView:textViewA];
+    [self centerTextView:textViewB];
 }
 
 - (void)didReceiveMemoryWarning
@@ -153,6 +158,12 @@
     }
 }
 
+-(void)hideKeyboard
+{
+    [textViewB resignFirstResponder];
+    [textViewA resignFirstResponder];
+}
+
 -(void)moveTextViewsUp:(BOOL)moveUp
 {
     float targetConstraint = moveUp ? 80 : defaultConstraint;
@@ -194,6 +205,11 @@
         return NO;
     }
     
+    if (textView.text.length + (text.length - range.length) >= 52)
+    {
+        return NO;
+    }
+    
     return YES;
 }
 
@@ -201,11 +217,15 @@
 {
     if ([object isKindOfClass:[UITextView class]])
     {
-        UITextView *tv = object;
-        CGFloat topCorrect = ([tv bounds].size.height - [tv contentSize].height * [tv zoomScale])/2.0;
-        topCorrect = ( topCorrect < 0.0 ? 0.0 : topCorrect );
-        tv.contentOffset = (CGPoint){.x = 0, .y = -topCorrect};
+        [self centerTextView:object];
     }
+}
+
+-(void)centerTextView:(UITextView *)textView
+{
+    CGFloat topCorrect = ([textView bounds].size.height - [textView contentSize].height * [textView zoomScale])/2.0;
+    topCorrect = ( topCorrect < 0.0 ? 0.0 : topCorrect );
+    textView.contentOffset = (CGPoint){.x = 0, .y = -topCorrect};
 }
 
 -(NSMutableArray *)loadHistory
@@ -309,14 +329,18 @@
         if (buttonIndex == 1)
         {
             //good
+            NSDictionary *decision = @{@"A": textViewA.text, @"B": textViewB.text, @"RAND": choice, @"FINAL": choice, @"PRIMARY": primary, @"SECONDARY": secondary};
             
-            [HUResultView showResultWithTitle:@"Great!" message:choice color:primary inView:self.view buttonNames:@[@"Ok"] action:^(NSInteger buttonIndex)
+            HUResultView *resultView = [HUResultView showResultWithTitle:@"Great!" message:choice color:primary inView:self.view buttonNames:@[@"Ok"] action:^(NSInteger buttonIndex)
             {
-                [self archiveProcess:@{@"A": textViewA.text, @"B": textViewB.text, @"RAND": choice, @"FINAL": choice, @"PRIMARY": primary, @"SECONDARY": secondary}];
+                
+                [self archiveProcess:decision];
                 
                 [self reset];
                 [HUResultView hideAlertAnimated:YES hideFade:YES];
             }];
+            
+            resultView.decision = decision;
         }else{
             //bad
             
@@ -325,13 +349,17 @@
             UIColor *primary = isA ? view.secondary : view.primary;
             UIColor *secondary = isA ? view.primary : view.secondary;
             
-            [HUResultView showResultWithTitle:@"Ok, then:" message:opposite color:primary inView:self.view buttonNames:@[@"Ok"] action:^(NSInteger buttonIndex)
+            NSDictionary *decision = @{@"A": textViewA.text, @"B": textViewB.text, @"RAND": choice, @"FINAL": opposite, @"PRIMARY": primary, @"SECONDARY": secondary};
+            
+            HUResultView *resultView = [HUResultView showResultWithTitle:@"Ok, then:" message:opposite color:primary inView:self.view buttonNames:@[@"Ok"] action:^(NSInteger buttonIndex)
             {
-                [self archiveProcess:@{@"A": textViewA.text, @"B": textViewB.text, @"RAND": choice, @"FINAL": opposite, @"PRIMARY": primary, @"SECONDARY": secondary}];
+                [self archiveProcess:decision];
                 
                 [self reset];
                 [HUResultView hideAlertAnimated:YES hideFade:YES];
             }];
+            
+            resultView.decision = decision;
         }
     }];
 }
