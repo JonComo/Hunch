@@ -9,7 +9,6 @@
 #import "HUViewController.h"
 
 #import "JCGradientBackground.h"
-#import "HUCircleLabel.h"
 
 #import "JCCollectionView.h"
 #import "HUHistoryCell.h"
@@ -20,16 +19,26 @@
 
 #import "HUColorProbability.h"
 
+#import "HUCircleView.h"
+
 #define DEFAULT_TEXT @"Tap to Edit"
 
 #define HISTORY_PATH [NSString stringWithFormat:@"%@/history", [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]]
 
-@interface HUViewController () <UIAlertViewDelegate, UITextFieldDelegate>
+@interface HUViewController () <UIAlertViewDelegate, UITextViewDelegate>
 {
-    HUCircleLabel *labelToChange;
+    __weak IBOutlet UIImageView *imageViewLogo;
     
-    __weak IBOutlet HUCircleLabel *labelA;
-    __weak IBOutlet HUCircleLabel *labelB;
+    __weak IBOutlet UITextView *textViewA;
+    __weak IBOutlet UITextView *textViewB;
+    
+    __weak IBOutlet HUCircleView *viewCircleA;
+    __weak IBOutlet HUCircleView *viewCircleB;
+    
+    __weak IBOutlet NSLayoutConstraint *constraintA;
+    __weak IBOutlet NSLayoutConstraint *constraintB;
+    
+    float defaultConstraint;
     
     __weak IBOutlet UIButton *buttonHistory;
     
@@ -50,12 +59,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedOption:)];
-    [labelA addGestureRecognizer:tap1];
-    
-    UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedOption:)];
-    [labelB addGestureRecognizer:tap2];
-    
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self reset];
@@ -71,10 +74,19 @@
         [buttonHistory setEnabled:NO];
     }
     
-    [[NSNotificationCenter defaultCenter] addObserverForName:ENTER_BG object:nil queue:nil usingBlock:^(NSNotification *note) {
-        //save history
-        [self saveHistory];
-    }];
+    defaultConstraint = constraintA.constant;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveHistory) name:ENTER_BG object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    
+    [textViewA addObserver:self forKeyPath:@"contentSize" options:(NSKeyValueObservingOptionNew) context:NULL];
+    [textViewB addObserver:self forKeyPath:@"contentSize" options:(NSKeyValueObservingOptionNew) context:NULL];
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -99,8 +111,8 @@
 {
     [self updateColors];
     
-    labelA.text = DEFAULT_TEXT;
-    labelB.text = DEFAULT_TEXT;
+    textViewA.text = DEFAULT_TEXT;
+    textViewB.text = DEFAULT_TEXT;
 }
 
 -(void)updateColors
@@ -118,66 +130,81 @@
         gradient.secondary = userColors[0];
     }
     
-    labelA.color = gradient.primary;
-    labelB.color = gradient.secondary;
+    viewCircleA.color = gradient.primary;
+    viewCircleB.color = gradient.secondary;
     
     [gradient setNeedsDisplay];
 }
 
--(void)tappedOption:(UITapGestureRecognizer *)tap
+-(void)keyboardWillChangeFrame:(NSNotification *)notification
 {
-    labelToChange = (HUCircleLabel *)tap.view;
+    CGRect keyboardRect;
     
-    switch (tap.state) {
-            
-        case UIGestureRecognizerStateRecognized:
-        {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Choice" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Set", nil];
-            
-            alert.tag = 100;
-            
-            alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-            UITextField *textField = [alert textFieldAtIndex:0];
-            textField.placeholder = @"Choice";
-            
-            if (![labelToChange.text isEqualToString:DEFAULT_TEXT] && labelToChange.text.length > 0){
-                textField.text = labelToChange.text;
-            }
-            
-            textField.clearButtonMode = UITextFieldViewModeWhileEditing;
-            textField.keyboardAppearance = UIKeyboardAppearanceDefault;
-            textField.delegate = self;
-            
-            
-            [alert show];
-        }
-            
-            break;
-            
-        default:
-            break;
+    [[notification.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardRect];
+    
+    NSLog(@"Rect: %@", NSStringFromCGRect(keyboardRect));
+    
+    if (keyboardRect.origin.y < self.view.bounds.size.height)
+    {
+        //visible
+        [self moveTextViewsUp:YES];
+    }else{
+        [self moveTextViewsUp:NO];
     }
 }
 
--(BOOL)textFieldShouldReturn:(UITextField *)textField
+-(void)moveTextViewsUp:(BOOL)moveUp
 {
-    return NO;
+    float targetConstraint = moveUp ? 80 : defaultConstraint;
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        constraintA.constant = targetConstraint;
+        constraintB.constant = targetConstraint;
+        
+        imageViewLogo.alpha = moveUp ? 0 : 1;
+        
+        [self.view layoutSubviews];
+    }];
 }
 
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+-(BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
-    if (alertView.tag == 100)
-    {
-        if (buttonIndex == 1) {
-            UITextField *textField = (UITextField *)[alertView textFieldAtIndex:0];
-            
-            if (textField.text.length > 0)
-            {
-                labelToChange.text = textField.text;
-            }else{
-                labelToChange.text = DEFAULT_TEXT;
-            }
+    if ([textView.text isEqualToString:DEFAULT_TEXT]) {
+        textView.text = @"";
+    }
+    
+    return YES;
+}
+
+-(void)textViewDidEndEditing:(UITextView *)textView
+{
+    if ([textView.text isEqualToString:@""]) {
+        textView.text = DEFAULT_TEXT;
+    }
+}
+
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    if ([text isEqualToString:@"\n"]) {
+        
+        if (![self autoSelectFields]){
+            [textView resignFirstResponder];
         }
+        
+        return NO;
+    }
+    
+    return YES;
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([object isKindOfClass:[UITextView class]])
+    {
+        UITextView *tv = object;
+        CGFloat topCorrect = ([tv bounds].size.height - [tv contentSize].height * [tv zoomScale])/2.0;
+        topCorrect = ( topCorrect < 0.0 ? 0.0 : topCorrect );
+        tv.contentOffset = (CGPoint){.x = 0, .y = -topCorrect};
     }
 }
 
@@ -207,8 +234,43 @@
     [NSKeyedArchiver archiveRootObject:history toFile:HISTORY_PATH];
 }
 
+-(BOOL)unfilledFields
+{
+    if ([textViewA.text isEqualToString:DEFAULT_TEXT] || [textViewB.text isEqualToString:DEFAULT_TEXT])
+    {
+        return YES;
+    }
+    
+    return NO;
+}
+
+-(BOOL)autoSelectFields
+{
+    if ([textViewA.text isEqualToString:DEFAULT_TEXT])
+    {
+        [textViewA becomeFirstResponder];
+        
+        return YES;
+    }
+    
+    if ([textViewB.text isEqualToString:DEFAULT_TEXT])
+    {
+        [textViewB becomeFirstResponder];
+        
+        return YES;
+    }
+    
+    return NO;
+}
+
 - (IBAction)decide:(id)sender
 {
+    if ([self unfilledFields])
+    {
+        [self autoSelectFields];
+        return;
+    }
+    
     BOOL isA = NO;
     
     UIColor *mostlyWinningColor = [HUColorProbability winningColor];
@@ -217,7 +279,7 @@
     {
         //mostly winning color should be shown
         
-        if ([labelA.color isEqual:mostlyWinningColor])
+        if ([viewCircleA.color isEqual:mostlyWinningColor])
         {
             isA = YES;
         }else{
@@ -227,7 +289,7 @@
     }else{
         //mostly losing color should be shown
         
-        if ([labelA.color isEqual:mostlyWinningColor])
+        if ([viewCircleA.color isEqual:mostlyWinningColor])
         {
             isA = NO;
         }else{
@@ -238,7 +300,7 @@
     
     JCGradientBackground *view = (JCGradientBackground *)self.view;
     
-    NSString *choice = isA ? labelA.text : labelB.text;
+    NSString *choice = isA ? textViewA.text : textViewB.text;
     UIColor *primary = isA ? view.primary : view.secondary;
     UIColor *secondary = isA ? view.secondary : view.primary;
     
@@ -250,7 +312,7 @@
             
             [HUResultView showResultWithTitle:@"Great!" message:choice color:primary inView:self.view buttonNames:@[@"Ok"] action:^(NSInteger buttonIndex)
             {
-                [self archiveProcess:@{@"A": labelA.text, @"B": labelB.text, @"RAND": choice, @"FINAL": choice, @"PRIMARY": primary, @"SECONDARY": secondary}];
+                [self archiveProcess:@{@"A": textViewA.text, @"B": textViewB.text, @"RAND": choice, @"FINAL": choice, @"PRIMARY": primary, @"SECONDARY": secondary}];
                 
                 [self reset];
                 [HUResultView hideAlertAnimated:YES hideFade:YES];
@@ -258,14 +320,14 @@
         }else{
             //bad
             
-            NSString *choice = isA ? labelA.text : labelB.text;
-            NSString *opposite = isA ? labelB.text : labelA.text;
+            NSString *choice = isA ? textViewA.text : textViewB.text;
+            NSString *opposite = isA ? textViewB.text : textViewA.text;
             UIColor *primary = isA ? view.secondary : view.primary;
             UIColor *secondary = isA ? view.primary : view.secondary;
             
             [HUResultView showResultWithTitle:@"Ok, then:" message:opposite color:primary inView:self.view buttonNames:@[@"Ok"] action:^(NSInteger buttonIndex)
             {
-                [self archiveProcess:@{@"A": labelA.text, @"B": labelB.text, @"RAND": choice, @"FINAL": opposite, @"PRIMARY": primary, @"SECONDARY": secondary}];
+                [self archiveProcess:@{@"A": textViewA.text, @"B": textViewB.text, @"RAND": choice, @"FINAL": opposite, @"PRIMARY": primary, @"SECONDARY": secondary}];
                 
                 [self reset];
                 [HUResultView hideAlertAnimated:YES hideFade:YES];

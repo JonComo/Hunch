@@ -1,5 +1,5 @@
 //
-//  HUCircleTextField.h
+//  HUCircleView.h
 //  Hunch
 //
 //  Created by Jon Como on 11/23/13.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HUCircleTextField : UITextField
+@interface HUCircleView : UIView
 
 @property (nonatomic, strong) UIColor *color;
 

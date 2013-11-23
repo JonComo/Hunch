@@ -26,7 +26,6 @@
     
     UIButton *buttonToSet;
     
-    
     __weak IBOutlet UIView *maskView;
 }
 
