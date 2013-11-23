@@ -28,10 +28,9 @@
     
     SLComposeViewController *compose = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
     
-    NSString *message = [NSString stringWithFormat:@"I picked %@ over %@!", winning, losing];
+    NSString *message = [NSString stringWithFormat:@"I picked %@ over %@! itunes.com/apps/YouPick", winning, losing];
     
     [compose setInitialText:message];
-    [compose addURL:[NSURL URLWithString:@"http://itunes.com/apps/YouPick"]];
     
     HUAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     
