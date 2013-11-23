@@ -22,7 +22,6 @@
 #import "HUCircleView.h"
 
 #define DEFAULT_TEXT @"Choice"
-#define ACCURACY @"accuracy"
 
 #define HISTORY_PATH [NSString stringWithFormat:@"%@/history", [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]]
 
