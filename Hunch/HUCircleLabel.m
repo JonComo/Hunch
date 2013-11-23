@@ -46,7 +46,7 @@
     [color getRed:&red green:&green blue:&blue alpha:nil];
     
     savedColor = color;
-    highlightColor = [UIColor colorWithRed:red*1.4 green:green*1.4 blue:blue*1.4 alpha:1];
+    highlightColor = [UIColor colorWithRed:red+0.5 green:green+0.5 blue:blue+0.5 alpha:1];
     
     [self setNeedsDisplay];
 }

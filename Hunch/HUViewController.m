@@ -22,6 +22,7 @@
 #import "HUCircleView.h"
 
 #define DEFAULT_TEXT @"Choice"
+#define ACCURACY @"accuracy"
 
 #define HISTORY_PATH [NSString stringWithFormat:@"%@/history", [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]]
 
@@ -35,8 +36,9 @@
     __weak IBOutlet HUCircleView *viewCircleA;
     __weak IBOutlet HUCircleView *viewCircleB;
     
-    __weak IBOutlet NSLayoutConstraint *constraintA;
-    __weak IBOutlet NSLayoutConstraint *constraintB;
+    __weak IBOutlet NSLayoutConstraint *constraintControl;
+    
+    __weak IBOutlet UIView *viewControl;
     
     float defaultConstraint;
     
@@ -74,7 +76,7 @@
         [buttonHistory setEnabled:NO];
     }
     
-    defaultConstraint = constraintA.constant;
+    defaultConstraint = constraintControl.constant;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveHistory) name:ENTER_BG object:nil];
     
@@ -146,16 +148,25 @@
     CGRect keyboardRect;
     
     [[notification.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardRect];
+    float animationDuration = [[notification.userInfo valueForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
     
     NSLog(@"Rect: %@", NSStringFromCGRect(keyboardRect));
     
-    if (keyboardRect.origin.y < self.view.bounds.size.height)
-    {
-        //visible
-        [self moveTextViewsUp:YES];
-    }else{
-        [self moveTextViewsUp:NO];
-    }
+    BOOL moveUp = keyboardRect.origin.y < self.view.bounds.size.height;
+    
+    float viewRemaining = self.view.bounds.size.height - keyboardRect.origin.y;
+    
+    float targetConstraint = viewRemaining - (viewRemaining/2 - viewControl.bounds.size.height/2);
+    
+    if (!moveUp) targetConstraint = defaultConstraint;
+    
+    [UIView animateWithDuration:animationDuration delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        constraintControl.constant = targetConstraint;
+        
+        imageViewLogo.alpha = moveUp ? 0 : 1;
+        
+        [self.view layoutSubviews];
+    } completion:nil];
 }
 
 -(void)hideKeyboard
@@ -164,25 +175,25 @@
     [textViewA resignFirstResponder];
 }
 
--(void)moveTextViewsUp:(BOOL)moveUp
-{
-    float targetConstraint = moveUp ? 80 : defaultConstraint;
-    
-    [UIView animateWithDuration:0.3 animations:^{
-        constraintA.constant = targetConstraint;
-        constraintB.constant = targetConstraint;
-        
-        imageViewLogo.alpha = moveUp ? 0 : 1;
-        
-        [self.view layoutSubviews];
-    }];
-}
-
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
     if ([textView.text isEqualToString:DEFAULT_TEXT]) {
         textView.text = @"";
     }
+    
+    HUCircleView *parent = (HUCircleView *)textView.superview;
+    
+    [UIView animateWithDuration:0.1 animations:^{
+        parent.layer.transform = CATransform3DMakeScale(1.15, 1.15, 1);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.2 animations:^{
+            parent.layer.transform = CATransform3DMakeScale(0.96, 0.96, 1);
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.2 animations:^{
+                parent.layer.transform = CATransform3DMakeScale(1, 1, 1);
+            }];
+        }];
+    }];
     
     return YES;
 }
@@ -199,7 +210,7 @@
     if ([text isEqualToString:@"\n"]) {
         
         if (![self autoSelectFields]){
-            [textView resignFirstResponder];
+            [self decide:nil];
         }
         
         return NO;
@@ -290,6 +301,9 @@
         [self autoSelectFields];
         return;
     }
+    
+    [textViewA resignFirstResponder];
+    [textViewB resignFirstResponder];
     
     BOOL isA = NO;
     
@@ -414,6 +428,8 @@
         }];
         
         collectionViewHistory.cellName = @"historyCell";
+        
+        collectionViewHistory.indicatorStyle = UIScrollViewIndicatorStyleWhite;
         
         collectionViewHistory.alwaysBounceVertical = YES;
         
