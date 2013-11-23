@@ -99,7 +99,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sb5-ap-SMb" userLabel="viewCircleB" customClass="HUCircleView">
-                                <rect key="frame" x="162" y="200" width="138" height="138"/>
+                                <rect key="frame" x="168" y="200" width="138" height="138"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" text="Choice B" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="nZO-3H-d40">
@@ -128,7 +128,7 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="sb5-ap-SMb" secondAttribute="trailing" constant="20" id="7Rn-uu-5Wr"/>
+                            <constraint firstAttribute="trailing" secondItem="sb5-ap-SMb" secondAttribute="trailing" constant="14" id="7Rn-uu-5Wr"/>
                             <constraint firstItem="GfW-kl-baw" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="20" symbolic="YES" id="BTh-Nd-wNp"/>
                             <constraint firstItem="jqB-LA-VyU" firstAttribute="top" secondItem="hqd-q9-Dzf" secondAttribute="bottom" constant="180" id="M61-Ld-NRa"/>
                             <constraint firstItem="GfW-kl-baw" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="74" id="XpS-hC-rJG"/>
