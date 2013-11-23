@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8615235B183531D00071E3E0 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8615234E183531D00071E3E0 /* logo@2x.png */; };
+		861CB9021840ED2400E7CC9F /* HUCircleTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 861CB9011840ED2400E7CC9F /* HUCircleTextField.m */; };
 		8674D4001836A18000A005AD /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8674D3FF1836A18000A005AD /* MBProgressHUD.m */; };
 		867B4B5E1832021A00F60F35 /* JCCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 867B4B5D1832021A00F60F35 /* JCCollectionView.m */; };
 		867B4B601832055C00F60F35 /* historyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 867B4B5F1832055C00F60F35 /* historyCell.xib */; };
@@ -47,6 +48,8 @@
 
 /* Begin PBXFileReference section */
 		8615234E183531D00071E3E0 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
+		861CB9001840ED2400E7CC9F /* HUCircleTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUCircleTextField.h; sourceTree = "<group>"; };
+		861CB9011840ED2400E7CC9F /* HUCircleTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUCircleTextField.m; sourceTree = "<group>"; };
 		8674D3FE1836A18000A005AD /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		8674D3FF1836A18000A005AD /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		867B4B5C1832021A00F60F35 /* JCCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCCollectionView.h; sourceTree = "<group>"; };
@@ -168,6 +171,8 @@
 				8697F76F1830F5020080BF89 /* Supporting Files */,
 				8697F7A01830FFA50080BF89 /* HUCircleLabel.h */,
 				8697F7A11830FFA50080BF89 /* HUCircleLabel.m */,
+				861CB9001840ED2400E7CC9F /* HUCircleTextField.h */,
+				861CB9011840ED2400E7CC9F /* HUCircleTextField.m */,
 				8697F79D1830FB960080BF89 /* JCGradientBackground.h */,
 				8697F79E1830FB960080BF89 /* JCGradientBackground.m */,
 				867B4B5C1832021A00F60F35 /* JCCollectionView.h */,
@@ -339,6 +344,7 @@
 				86DFD103183680B500BC05DF /* HUInfoViewController.m in Sources */,
 				867B4B5E1832021A00F60F35 /* JCCollectionView.m in Sources */,
 				867B4B631832098500F60F35 /* HUHistoryCell.m in Sources */,
+				861CB9021840ED2400E7CC9F /* HUCircleTextField.m in Sources */,
 				8697F79F1830FB960080BF89 /* JCGradientBackground.m in Sources */,
 				8697F77F1830F5020080BF89 /* HUViewController.m in Sources */,
 				8674D4001836A18000A005AD /* MBProgressHUD.m in Sources */,
